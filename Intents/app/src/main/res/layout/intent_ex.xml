@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:text="@string/app_name"
+
+
+
+    android:weightSum="1">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="@dimen/margin"
+        android:background="@color/grey_cloud"
+
+        >
+
+        <Button
+            android:layout_width="@dimen/width"
+            android:layout_height="@dimen/height"
+            android:text="@string/apps"
+            android:id="@+id/b_apps"
+            android:textSize="@dimen/text_size"
+            android:padding="@dimen/padding"
+            android:background="@color/platinum"
+            android:layout_margin="@dimen/margin"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:layout_width="@dimen/width"
+            android:layout_height="@dimen/height"
+            android:text="@string/settings"
+            android:id="@+id/b_setting"
+            android:background="@color/platinum"
+            android:textSize="@dimen/text_size"
+            android:padding="@dimen/padding"
+            android:layout_margin="@dimen/margin"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:layout_width="@dimen/width"
+            android:layout_height="@dimen/height"
+            android:text="@string/vibrate"
+            android:id="@+id/b_vibrate"
+            android:background="@color/platinum"
+            android:textSize="@dimen/text_size"
+            android:layout_margin="@dimen/margin"
+            android:padding="@dimen/padding"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+</LinearLayout>
