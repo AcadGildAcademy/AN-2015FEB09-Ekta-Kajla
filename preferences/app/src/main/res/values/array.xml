@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="listentries">
+       <item>List item1 Minutes</item>
+        <item>List item2 Daily</item>
+        <item>List item3 Weekly</item>
+        <item>List item4 Yearly</item>
+        <item>List item5 Never</item>
+    </string-array>
+    <string-array name="listvalues">
+        <item> 10</item>
+        <item>1</item>
+        <item>7</item>
+        <item>30</item>
+        <item>0</item>
+    </string-array>
+</resources>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">credit_card</string>
+    <string name="Enter_Card_Balance">Enter Card Balance($)</string>
+
+</resources>

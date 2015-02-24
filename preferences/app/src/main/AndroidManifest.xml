@@ -1,14 +1,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.eku.my_app2">
+    package="com.example.eku.preferences">
 
     <application android:allowBackup="true" android:label="@string/app_name"
         android:icon="@drawable/ic_launcher" android:theme="@style/AppTheme">
-    <activity android:name=".third.third_screen">
-        <intent-filter>
+
+        <activity android:name=".MainActivity">
+            <intent-filter >
                 <action android:name="android.intent.action.MAIN"></action>
                 <category android:name="android.intent.category.LAUNCHER"></category>
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
