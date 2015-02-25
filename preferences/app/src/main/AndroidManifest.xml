@@ -10,7 +10,7 @@
                 <category android:name="android.intent.category.LAUNCHER"></category>
             </intent-filter>
         </activity>
-
+            <activity android:name=".UserSettingActivity"></activity>
     </application>
 
 </manifest>
