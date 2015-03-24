@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android1="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:context="package com.example.eku.first_page">
+
+    <item
+        android:id="@+id/add_menu"
+         android:title="Menu"
+        android:icon="@android:drawable/ic_input_add"
+        android1:showAsAction="always">
+
+    </item>
+
+    <item
+        android:id="@+id/sign_in"
+        android:title="SIGN_IN"
+        android:icon="@drawable/sign_in_user"
+        android1:showAsAction="always">
+    </item>
+
+    <item
+        android:id="@+id/option_menu1"
+        android:title="Now On Sale"
+        >
+    </item>
+    <item
+        android:id="@+id/option_menu2"
+        android:title="Upcoming Events"
+        >
+
+    </item>
+    <item
+        android:id="@+id/option_menu3"
+        android:title="Past Events"
+        >
+
+    </item>
+    <item
+        android:id="@+id/option_menu4"
+        android:title="Booking"
+        >
+
+    </item>
+    <item
+        android:id="@+id/option_menu5"
+        android:title="Artists"
+        >
+
+    </item>
+    <item
+        android:id="@+id/option_menu6"
+        android:title="Venue's"
+        >
+
+    </item>
+    <item
+        android:id="@+id/option_menu7"
+        android:title="Contacts us"
+        >
+
+    </item>
+
+
+
+
+</menu>
