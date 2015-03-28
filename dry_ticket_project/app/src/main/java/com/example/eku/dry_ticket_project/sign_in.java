@@ -2,7 +2,6 @@ package com.example.eku.dry_ticket_project;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -29,8 +28,9 @@ import java.util.regex.Pattern;
 public class sign_in extends Activity {
     private ProgressDialog pDialog;
     EditText name, password;
-    Button sign_in, cancel;
+    Button sign_in, logout;
     CheckBox checkBox;
+//    UserSession session;
 
     private static String url = "http://bishasha.com/json/whdeal_login.php";
 
@@ -51,9 +51,10 @@ public class sign_in extends Activity {
 
         name = (EditText) findViewById(R.id.username_edit);
         password = (EditText) findViewById(R.id.password_edit);
-
-
+        logout=(Button) findViewById(R.id.logout);
+      //  session = new UserSession(getApplicationContext());
         loadMySavePreferences();
+
         sign_in = (Button) findViewById(R.id.sign);
         sign_in.setOnClickListener(new View.OnClickListener()
         {
@@ -90,6 +91,7 @@ public class sign_in extends Activity {
                         savedMySharedPreferences("user", st);
                         savedMySharedPreferences("password",st2);
                     }
+
                 }
             }
         });
@@ -166,17 +168,19 @@ public class sign_in extends Activity {
                }
            }
        }
+
     public  void loadMySavePreferences()
     {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 
-        String str = sp.getString("user","abc@gmail.com");
-        String pass=sp.getString("pass","def");
+        String str = sp.getString("user","");
+        String pass=sp.getString("password","");
         Boolean ck =sp.getBoolean("check", true);
-         name.setText(str);
-         password.setText(pass);
+        name.setText(str);
+        password.setText(pass);
         checkBox.setChecked(ck);
     }
+
     public void savedMySharedPreferences(String Key,String values)
     {
         SharedPreferences sp=PreferenceManager.getDefaultSharedPreferences(this);

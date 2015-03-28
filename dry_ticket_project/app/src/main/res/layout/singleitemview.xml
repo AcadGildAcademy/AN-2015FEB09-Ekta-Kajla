@@ -1,61 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
    android:layout_width="match_parent"
+    android:orientation="vertical"
+
     android:layout_height="match_parent">
     <TextView
-        android:id="@+id/ranklabel"
+        android:id="@+id/desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:text="@string/ranklabel" />
+        android:textSize="25dp"
+        />
 
     <TextView
-        android:id="@+id/rank"
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_toRightOf="@+id/ranklabel" />
+        android:textSize="25dp"
+
+       />
 
     <TextView
-        android:id="@+id/countrylabel"
+        android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_below="@+id/ranklabel"
-        android:text="@string/countrylabel" />
+        android:textSize="25dp"
+        />
 
     <TextView
-        android:id="@+id/country"
+        android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rank"
-        android:textSize="20dp"
-        android:layout_toRightOf="@+id/countrylabel" />
+
+        android:textSize="25dp"
+
+        />
 
     <TextView
-        android:id="@+id/populationlabel"
+        android:id="@+id/venue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/countrylabel"
-        android:textSize="20dp"
-        android:text="@string/populationlabel" />
+        android:textSize="25dp"
 
-    <TextView
-        android:id="@+id/population"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_below="@+id/country"
-        android:layout_toRightOf="@+id/populationlabel" />
+        />
+
+
 
     <ImageView
-        android:id="@+id/flag"
-        android:layout_width="wrap_content"
+        android:id="@+id/flag2"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:background="#000000"
 
-        android:padding="1dp" />
+        android:padding="10dp" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:background="#ffff130c" />
 
 
-</RelativeLayout>
+
+</LinearLayout>

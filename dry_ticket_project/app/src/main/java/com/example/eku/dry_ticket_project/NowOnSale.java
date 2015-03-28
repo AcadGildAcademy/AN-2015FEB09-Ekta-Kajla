@@ -23,10 +23,14 @@ public class NowOnSale extends Activity {
     ListViewAdapter adapter;
     ProgressDialog mProgressDialog;
     ArrayList<HashMap<String, String>> arraylist;
-    static String RANK = "rank";
-    static String COUNTRY = "country";
-    static String POPULATION = "population";
-    static String FLAG = "flag";
+    static String DESC = "desc";
+    static String DATE = "date";
+    static String TIME = "time";
+    static String PRICE = "price";
+    static String VENUE = "venue";
+    static String IMAGE_PATH = "image_path";
+    static String DETAIL = "detail";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,7 +50,7 @@ public class NowOnSale extends Activity {
             // Create a progressdialog
             mProgressDialog = new ProgressDialog(NowOnSale.this);
             // Set progressdialog title
-            mProgressDialog.setTitle("Android JSON Parse Tutorial");
+            mProgressDialog.setTitle("Android JSON Parse");
             // Set progressdialog message
             mProgressDialog.setMessage("Loading...");
             mProgressDialog.setIndeterminate(false);
@@ -60,20 +64,23 @@ public class NowOnSale extends Activity {
             arraylist = new ArrayList<HashMap<String, String>>();
             // Retrieve JSON Objects from the given URL address
             jsonobject = JSONfunctions
-                    .getJSONfromURL("http://www.androidbegin.com/tutorial/jsonparsetutorial.txt");
+                    .getJSONfromURL("http://bishasha.com/json/events.php");
 
             try {
                 // Locate the array name in JSON
-                jsonarray = jsonobject.getJSONArray("worldpopulation");
+                jsonarray = jsonobject.getJSONArray("events");
 
                 for (int i = 0; i < jsonarray.length(); i++) {
                     HashMap<String, String> map = new HashMap<String, String>();
                     jsonobject = jsonarray.getJSONObject(i);
                     // Retrive JSON Objects
-                    map.put("rank", jsonobject.getString("rank"));
-                    map.put("country", jsonobject.getString("country"));
-                    map.put("population", jsonobject.getString("population"));
-                    map.put("flag", jsonobject.getString("flag"));
+                    map.put("desc", jsonobject.getString("desc"));
+                    map.put("date", jsonobject.getString("date"));
+                    map.put("time", jsonobject.getString("time"));
+                    map.put("price", jsonobject.getString("price"));
+                    map.put("venue", jsonobject.getString("venue"));
+                    map.put("image_path", jsonobject.getString("image_path"));
+                    map.put("detail", jsonobject.getString("detail"));
                     // Set the JSON Objects into the array
                     arraylist.add(map);
                 }
