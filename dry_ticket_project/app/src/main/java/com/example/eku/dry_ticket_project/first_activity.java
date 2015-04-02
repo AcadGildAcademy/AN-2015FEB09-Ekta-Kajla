@@ -15,24 +15,25 @@ import android.widget.TextView;
  * Created by DELL on 11-03-2015.
  */
 public class first_activity extends ActionBarActivity {
-   FragmentManager fm = getFragmentManager();
+    FragmentManager fm = getFragmentManager();
     TextView dry;
     Button stop;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
-        dry=(TextView)findViewById(R.id.txtdry);
-       // stop=(Button)findViewById(R.id.stop);
+        dry = (TextView) findViewById(R.id.txtdry);
+        // stop=(Button)findViewById(R.id.stop);
         dry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dry.setVisibility(View.GONE);
             }
         });
-       getActionBar();
+        getActionBar();
         // changing action bar color
-      //  getActionBar().setBackgroundDrawable(
+        //  getActionBar().setBackgroundDrawable(
         //        new ColorDrawable(Color.parseColor("#ffff1217")));
     }
 
@@ -53,14 +54,34 @@ public class first_activity extends ActionBarActivity {
         } else if (id == R.id.add_menu) {
             Intent intent = new Intent(first_activity.this, sign_up.class);
             startActivity(intent);
-          // CustomDialog cd = new CustomDialog();
-           // cd.show(fm, "Dialog");
+            // CustomDialog cd = new CustomDialog();
+            // cd.show(fm, "Dialog");
 
             return true;
-        }
-        else if (id==R.id.option_menu1){
+        } else if (id == R.id.option_menu1) {
             Intent intent = new Intent(first_activity.this, NowOnSale.class);
             startActivity(intent);
+
+        } else if (id == R.id.option_menu2) {
+            Intent intent = new Intent(first_activity.this, UpcomingEvents.class);
+            startActivity(intent);
+
+        } else if (id == R.id.option_menu3) {
+            Intent intent = new Intent(first_activity.this, PastEvents.class);
+            startActivity(intent);
+
+        } else if (id == R.id.option_menu4) {
+            Intent intent = new Intent(first_activity.this, PastEvents.class);
+            startActivity(intent);
+
+        } else if (id == R.id.option_menu5) {
+            Intent intent = new Intent(first_activity.this, PastEvents.class);
+            startActivity(intent);
+
+        } else if (id == R.id.option_menu6) {
+            Intent intent = new Intent(first_activity.this, Venues.class);
+            startActivity(intent);
+
         }
         return super.onOptionsItemSelected(item);
     }

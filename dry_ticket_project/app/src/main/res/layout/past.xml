@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-   android:layout_width="match_parent"
-     android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
 
     <ImageView
-        android:id="@+id/flag"
+        android:id="@+id/flag3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -16,15 +18,15 @@
         android:layout_height="wrap_content"
         android:textSize="25sp"
         android:text="@string/Desc"
-        android:layout_toRightOf="@+id/flag"
+        android:layout_toRightOf="@+id/flag3"
         android:textColor="@color/black"
         />
     <TextView
-        android:id="@+id/desc"
+        android:id="@+id/desc3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25sp"
-android:textStyle="bold"
+        android:textStyle="bold"
         android:textColor="@color/red"
         android:layout_toRightOf="@+id/description"
         />
@@ -34,37 +36,37 @@ android:textStyle="bold"
         android:layout_height="wrap_content"
         android:textSize="25sp"
         android:text="@string/date"
-android:textColor="@color/black"
+        android:textColor="@color/black"
         android:layout_below="@+id/description"
-        android:layout_toRightOf="@+id/flag"/>
+        android:layout_toRightOf="@+id/flag3"/>
 
     <TextView
-        android:id="@+id/date"
+        android:id="@+id/date3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25sp"
         android:textColor="@color/red"
         android:textStyle="bold"
-        android:layout_below="@+id/desc"
+        android:layout_below="@+id/desc3"
         android:layout_toRightOf="@+id/datee" />
-        />
+    />
     <TextView
-        android:id="@+id/timee"
+        android:id="@+id/timee3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25sp"
         android:text="@string/time"
         android:layout_below="@+id/datee"
-        android:layout_toRightOf="@+id/flag"
+        android:layout_toRightOf="@+id/flag3"
         android:textColor="@color/black"/>
     <TextView
-        android:id="@+id/time"
+        android:id="@+id/time3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25sp"
         android:textColor="@color/red"
         android:textStyle="bold"
-        android:layout_below="@+id/date"
+        android:layout_below="@+id/date3"
         android:layout_toRightOf="@+id/timee"
         />
     <TextView
@@ -73,15 +75,15 @@ android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:textSize="25sp"
         android:text="@string/price"
-        android:layout_below="@+id/timee"
-        android:layout_toRightOf="@+id/flag"
+        android:layout_below="@+id/time3"
+        android:layout_toRightOf="@+id/flag3"
         android:textColor="@color/black"/>
 
     <TextView
-        android:id="@+id/price"
+        android:id="@+id/price3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/time"
+        android:layout_below="@+id/time3"
         android:textSize="25sp"
 
         android:textColor="@color/red"
@@ -92,41 +94,22 @@ android:textColor="@color/black"
         android:id="@+id/venuee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:text="@string/venue"
         android:textColor="@color/black"
 
-        android:layout_below="@+id/pricee"
-        android:layout_toRightOf="@+id/flag"/>
+        android:layout_below="@+id/price3"
+        android:layout_toRightOf="@+id/flag3"/>
     <TextView
 
-        android:id="@+id/venue"
+        android:id="@+id/venue3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25sp"
         android:textColor="@color/red"
         android:textStyle="bold"
-        android:layout_below="@+id/price"
+        android:layout_below="@+id/price3"
         android:layout_toRightOf="@+id/venuee"
 
         />
-
-
-
-    <Button
-    android:id="@+id/buy_ticket"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textColor="@color/red"
-    android:text="@string/buy"
-      android:textStyle="italic"
-
-   android:layout_alignParentLeft="true"
-        android:layout_below="@+id/flag"
-        android:padding="20dp"
-
-
-    />
-
-
-   </RelativeLayout>
+</RelativeLayout>

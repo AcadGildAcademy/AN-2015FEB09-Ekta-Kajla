@@ -1,13 +1,5 @@
 package com.example.eku.dry_ticket_project;
 
-/**
- * Created by DELL on 21-03-2015.
- */
-import java.util.ArrayList;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -20,22 +12,31 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-public class NowOnSale extends ActionBarActivity {
-    // Declare Variables
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+/**
+ * Created by DELL on 28-03-2015.
+ */
+public class UpcomingEvents extends ActionBarActivity
+{
+   // Declare Variables
     JSONObject jsonobject;
     JSONArray jsonarray;
     ListView listview;
-    ListViewAdapter adapter;
+    U_ListViewAdapter adapter;
     ProgressDialog mProgressDialog;
     ArrayList<HashMap<String, String>> arraylist;
     static String DESC = "desc";
     static String DATE = "date";
     static String TIME = "time";
-    static String PRICE = "price";
     static String VENUE = "venue";
+    static String PRICE = "price";
     static String IMAGE_PATH = "image_path";
-    static String TITLE = "title";
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,7 @@ public class NowOnSale extends ActionBarActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             // Create a progressdialog
-            mProgressDialog = new ProgressDialog(NowOnSale.this);
+            mProgressDialog = new ProgressDialog(UpcomingEvents.this);
             // Set progressdialog title
             mProgressDialog.setTitle("Wait For Result");
             // Set progressdialog message
@@ -70,7 +71,7 @@ public class NowOnSale extends ActionBarActivity {
             arraylist = new ArrayList<HashMap<String, String>>();
             // Retrieve JSON Objects from the given URL address
             jsonobject = JSONfunctions
-                    .getJSONfromURL("http://bishasha.com/json/now_on_sale_events.php");
+                    .getJSONfromURL("http://bishasha.com/json/upcoming_events.php");
 
             try {
                 // Locate the array name in JSON
@@ -83,10 +84,10 @@ public class NowOnSale extends ActionBarActivity {
                     map.put("desc", jsonobject.getString("desc"));
                     map.put("date", jsonobject.getString("date"));
                     map.put("time", jsonobject.getString("time"));
-                    map.put("price", jsonobject.getString("price"));
+                   // map.put("price", jsonobject.getString("price"));
                     map.put("venue", jsonobject.getString("venue"));
                     map.put("image_path", jsonobject.getString("image_path"));
-                    map.put("title", jsonobject.getString("title"));
+
                     // Set the JSON Objects into the array
                     arraylist.add(map);
                 }
@@ -102,7 +103,7 @@ public class NowOnSale extends ActionBarActivity {
             // Locate the listview in listview_main.xml
             listview = (ListView) findViewById(R.id.listview);
             // Pass the results into ListViewAdapter.java
-            adapter = new ListViewAdapter(NowOnSale.this, arraylist);
+            adapter = new U_ListViewAdapter(UpcomingEvents.this, arraylist);
             // Set the adapter to the ListView
             listview.setAdapter(adapter);
             // Close the progressdialog
@@ -120,41 +121,42 @@ public class NowOnSale extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.sign_in) {
-            Intent intent = new Intent(NowOnSale.this, sign_in.class);
+            Intent intent = new Intent(UpcomingEvents.this, sign_in.class);
             startActivity(intent);
         } else if (id == R.id.add_menu) {
-            Intent intent = new Intent(NowOnSale.this, sign_up.class);
+            Intent intent = new Intent(UpcomingEvents.this, sign_up.class);
             startActivity(intent);
             // CustomDialog cd = new CustomDialog();
             // cd.show(fm, "Dialog");
 
             return true;
         } else if (id == R.id.option_menu1) {
-            Intent intent = new Intent(NowOnSale.this, NowOnSale.class);
+            Intent intent = new Intent(UpcomingEvents.this, NowOnSale.class);
             startActivity(intent);
 
         } else if (id == R.id.option_menu2) {
-            Intent intent = new Intent(NowOnSale.this, UpcomingEvents.class);
+            Intent intent = new Intent(UpcomingEvents.this, UpcomingEvents.class);
             startActivity(intent);
 
         } else if (id == R.id.option_menu3) {
-            Intent intent = new Intent(NowOnSale.this, PastEvents.class);
+            Intent intent = new Intent(UpcomingEvents.this, PastEvents.class);
             startActivity(intent);
 
         } else if (id == R.id.option_menu4) {
-            Intent intent = new Intent(NowOnSale.this, PastEvents.class);
+            Intent intent = new Intent(UpcomingEvents.this, PastEvents.class);
             startActivity(intent);
 
         } else if (id == R.id.option_menu5) {
-            Intent intent = new Intent(NowOnSale.this, PastEvents.class);
+            Intent intent = new Intent(UpcomingEvents.this, PastEvents.class);
             startActivity(intent);
 
         } else if (id == R.id.option_menu6) {
-            Intent intent = new Intent(NowOnSale.this, Venues.class);
+            Intent intent = new Intent(UpcomingEvents.this, Venues.class);
             startActivity(intent);
 
         }
         return super.onOptionsItemSelected(item);
     }
 }
+
 

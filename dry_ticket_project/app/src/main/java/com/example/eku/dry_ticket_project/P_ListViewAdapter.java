@@ -1,7 +1,7 @@
 package com.example.eku.dry_ticket_project;
 
 /**
- * Created by DELL on 21-03-2015.
+ * Created by DELL on 31-03-2015.
  */
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,7 +16,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ListViewAdapter extends BaseAdapter {
+public class P_ListViewAdapter extends BaseAdapter {
 
     // Declare Variables
     Context context;
@@ -25,8 +25,8 @@ public class ListViewAdapter extends BaseAdapter {
     ImageLoader imageLoader;
     HashMap<String, String> resultp = new HashMap<String, String>();
 
-    public ListViewAdapter(Context context,
-                           ArrayList<HashMap<String, String>> arraylist) {
+    public P_ListViewAdapter(Context context,
+                             ArrayList<HashMap<String, String>> arraylist) {
         this.context = context;
         data = arraylist;
         imageLoader = new ImageLoader(context);
@@ -49,39 +49,49 @@ public class ListViewAdapter extends BaseAdapter {
 
     public View getView(final int position, View convertView, ViewGroup parent) {
         // Declare Variables
-      /*  TextView desc;
+        TextView desc;
         TextView date;
         TextView time;
-*/        ImageView image_path;
-        TextView title;
+        TextView price;
+        TextView venue;
+
+        ImageView image_path;
+        //  TextView detail;
 
         inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View itemView = inflater.inflate(R.layout.listview_item, parent, false);
+        View itemView = inflater.inflate(R.layout.past, parent, false);
         // Get the position
         resultp = data.get(position);
 
         // Locate the TextViews in listview_item.xml
-  /*      desc = (TextView) itemView.findViewById(R.id.date);
-        date = (TextView) itemView.findViewById(R.id.price);
-        time = (TextView) itemView.findViewById(R.id.time);
-  */      title = (TextView) itemView.findViewById(R.id.detail);
+        desc = (TextView) itemView.findViewById(R.id.desc3);
+        date = (TextView) itemView.findViewById(R.id.date3);
+        time = (TextView) itemView.findViewById(R.id.time3);
+        price = (TextView) itemView.findViewById(R.id.price3);
+        venue = (TextView) itemView.findViewById(R.id.venue3);
+
+
+        //      detail = (TextView) itemView.findViewById(R.id.detail);
 
         // Locate the ImageView in listview_item.xml
-       image_path = (ImageView) itemView.findViewById(R.id.flag);
+        image_path = (ImageView) itemView.findViewById(R.id.flag3);
 
         // Capture position and set results to the TextViews
-   /*     desc.setText(resultp.get(NowOnSale.DESC));
-        date.setText(resultp.get(NowOnSale.DATE));
-        time.setText(resultp.get(NowOnSale.TIME));
-     */   title.setText(resultp.get(NowOnSale.TITLE));
+        desc.setText(resultp.get(PastEvents.DESC));
+        date.setText(resultp.get(PastEvents.DATE));
+        time.setText(resultp.get(PastEvents.TIME));
+        price.setText(resultp.get(PastEvents.PRICE));
+        venue.setText(resultp.get(PastEvents.VENUE));
+
+        // detail.setText(resultp.get(NowOnSale.DETAIL));
 
         // Capture position and set results to the ImageView
         // Passes image_path images URL into ImageLoader.class
-        imageLoader.DisplayImage(resultp.get(NowOnSale.IMAGE_PATH), image_path);
+        imageLoader.DisplayImage(resultp.get(PastEvents.IMAGE_PATH), image_path);
         // Capture ListView item click
-        itemView.setOnClickListener(new OnClickListener() {
+      itemView.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
@@ -89,16 +99,16 @@ public class ListViewAdapter extends BaseAdapter {
                 resultp = data.get(position);
                 Intent intent = new Intent(context, singleitemview.class);
                 // Pass all data desc
-                intent.putExtra("desc", resultp.get(NowOnSale.DESC));
+                intent.putExtra("desc", resultp.get(UpcomingEvents.DESC));
                 // Pass all data date
-                intent.putExtra("date", resultp.get(NowOnSale.DATE));
+                intent.putExtra("date", resultp.get(UpcomingEvents.DATE));
                 // Pass all data time
-                intent.putExtra("time",resultp.get(NowOnSale.TIME));
-                intent.putExtra("price", resultp.get(NowOnSale.PRICE));
-                intent.putExtra("venue", resultp.get(NowOnSale.VENUE));
+                intent.putExtra("time", resultp.get(UpcomingEvents.TIME));
+                intent.putExtra("price", resultp.get(UpcomingEvents.PRICE));
+                intent.putExtra("venue", resultp.get(UpcomingEvents.VENUE));
                 // Pass all data image_path
-                intent.putExtra("image_path", resultp.get(NowOnSale.IMAGE_PATH));
-              //  intent.putExtra("detail",resultp.get(NowOnSale.DETAIL));
+                intent.putExtra("image_path", resultp.get(UpcomingEvents.IMAGE_PATH));
+                //  intent.putExtra("detail",resultp.get(NowOnSale.DETAIL));
                 // Start SingleItemView Class
                 context.startActivity(intent);
 

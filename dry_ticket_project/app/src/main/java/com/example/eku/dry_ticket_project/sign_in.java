@@ -2,11 +2,16 @@ package com.example.eku.dry_ticket_project;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -25,14 +30,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class sign_in extends Activity {
+public class sign_in extends ActionBarActivity {
     private ProgressDialog pDialog;
     EditText name, password;
     Button sign_in, logout;
     CheckBox checkBox;
-//    UserSession session;
+    UserSession session;
 
-    private static String url = "http://bishasha.com/json/whdeal_login.php";
+    private static String url = "http://bishasha.com/json/event_login.php";
 
     private static final String TAG_SUCCESS = "success";
 
@@ -52,10 +57,18 @@ public class sign_in extends Activity {
         name = (EditText) findViewById(R.id.username_edit);
         password = (EditText) findViewById(R.id.password_edit);
         logout=(Button) findViewById(R.id.logout);
-      //  session = new UserSession(getApplicationContext());
-        loadMySavePreferences();
 
         sign_in = (Button) findViewById(R.id.sign);
+       session = new UserSession(getApplicationContext());
+
+        loadMySavePreferences();
+        getActionBar();
+
+        if(session.isUserLoggedIn())
+        {
+            sign_in.setEnabled(false);
+        }
+
         sign_in.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -93,8 +106,17 @@ public class sign_in extends Activity {
                     }
 
                 }
+
             }
         });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                session.logoutUser();
+
+            }
+        });
+
     }
        private class GetContacts extends AsyncTask<Void,Integer,Void>
        {
@@ -150,14 +172,17 @@ public class sign_in extends Activity {
            @Override
            protected void onProgressUpdate(Integer... values) {
                super.onProgressUpdate(values);
+
                int success=values[0];
+               String username_value = name.getText().toString();
+               String userpass_value = password.getText().toString();
                if (success==1)
                {
                    Log.d("Login Successful","Login Success");
                    Toast.makeText(getApplicationContext(),"login success",Toast.LENGTH_LONG).show();
                   // Intent intent=new Intent (sign_in.this,Now_on_sale.class);
                     //             startActivity (intent);
-
+                     session.createUserLoginSession(username_value,userpass_value);
                    finish();
 
                }
@@ -212,6 +237,53 @@ public class sign_in extends Activity {
             return true;
         }
         return false;
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater m = getMenuInflater();
+        m.inflate(R.menu.menu_file, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.sign_in) {
+            Intent intent = new Intent(sign_in.this, sign_in.class);
+            startActivity(intent);
+        } else if (id == R.id.add_menu) {
+            Intent intent = new Intent(sign_in.this, sign_up.class);
+            startActivity(intent);
+            // CustomDialog cd = new CustomDialog();
+            // cd.show(fm, "Dialog");
+
+            return true;
+        } else if (id == R.id.option_menu1) {
+            Intent intent = new Intent(sign_in.this, NowOnSale.class);
+            startActivity(intent);
+
+        } else if (id == R.id.option_menu2) {
+            Intent intent = new Intent(sign_in.this, UpcomingEvents.class);
+            startActivity(intent);
+
+        } else if (id == R.id.option_menu3) {
+            Intent intent = new Intent(sign_in.this, PastEvents.class);
+            startActivity(intent);
+
+        } else if (id == R.id.option_menu4) {
+            Intent intent = new Intent(sign_in.this, PastEvents.class);
+            startActivity(intent);
+
+        } else if (id == R.id.option_menu5) {
+            Intent intent = new Intent(sign_in.this, PastEvents.class);
+            startActivity(intent);
+
+        } else if (id == R.id.option_menu6) {
+            Intent intent = new Intent(sign_in.this, Venues.class);
+            startActivity(intent);
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

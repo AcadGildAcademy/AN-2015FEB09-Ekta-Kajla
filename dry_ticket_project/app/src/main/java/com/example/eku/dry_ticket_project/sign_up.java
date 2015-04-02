@@ -32,7 +32,7 @@ public class sign_up extends Activity {
     Button sign_up, cancel;
 
 
-    private static String url = "http://bishasha.com/json/whdeal_signup.php";
+    private static String url = "http://bishasha.com/json/event_signup.php";
 
     private static final String TAG_SUCCESS = "success";
 

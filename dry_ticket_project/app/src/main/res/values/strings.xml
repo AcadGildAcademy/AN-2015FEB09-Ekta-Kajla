@@ -1,15 +1,20 @@
 <resources>
-    <string name="app_name">dry_ticket_project</string>
+    <string name="app_name">Welcome</string>
     <string name="enter_name">Enter Name</string>
     <string name="password">Enter Password</string>
     <string name="title">You need to sign up</string>
     <string name="add">Add</string>
     <string name="cancel">Cancel</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="menu_settings">Settings</string>
-    <string name="ranklabel">"Date : "</string>
-    <string name="countrylabel">"Time : "</string>
-    <string name="populationlabel">"Venue : "</string>
+    <string name="Desc">Description::-</string>
+    <string name="date">Date::-</string>
+    <string name="time">Time::-</string>
+    <string name="venue">Venue::-</string>
+    <string name="price">Price::-</string>
+    <string name="buy">Buy Ticket</string>
+
+
+
+
 
 </resources>

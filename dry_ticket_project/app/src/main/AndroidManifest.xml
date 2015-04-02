@@ -11,9 +11,12 @@
                 <action android:name="android.intent.action.MAIN"></action>
                 <category android:name="android.intent.category.LAUNCHER"></category>
             </intent-filter></activity>
-        <activity android:name=".sign_in"></activity>
-        <activity android:name=".sign_up"></activity>
-<activity android:name=".NowOnSale"></activity>
+        <activity android:name=".sign_in" android:label="Sign In" android:icon="@drawable/ic_launcher"></activity>
+        <activity android:name=".sign_up" android:label="Sign Up" android:icon="@drawable/ic_launcher"></activity>
+        <activity android:name=".NowOnSale" android:label="Now On Sale" android:icon="@drawable/ic_launcher"></activity>
+        <activity android:name=".UpcomingEvents" android:label="Upcoming Events" android:icon="@drawable/ic_launcher"></activity>
+        <activity android:name=".PastEvents" android:label="Past Events" android:icon="@drawable/ic_launcher"></activity>
+        <activity android:name=".Venues" android:label="Venues" android:icon="@drawable/ic_launcher"></activity>
         <activity android:name=".singleitemview" ></activity>
 
     </application>

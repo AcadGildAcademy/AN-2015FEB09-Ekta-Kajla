@@ -38,7 +38,7 @@ public class ImageLoader {
         executorService = Executors.newFixedThreadPool(5);
     }
 
-    final int stub_id = R.drawable.abc_ab_share_pack_holo_dark;
+    final int stub_id = R.drawable.temp_img;
 
     public void DisplayImage(String url, ImageView imageView) {
         imageViews.put(imageView, url);

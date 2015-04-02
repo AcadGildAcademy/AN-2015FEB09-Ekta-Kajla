@@ -6,10 +6,14 @@ package com.example.eku.dry_ticket_project;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class singleitemview extends Activity {
+public class singleitemview extends ActionBarActivity {
     // Declare Variables
     String desc;
     String date;
@@ -48,7 +52,7 @@ public class singleitemview extends Activity {
         TextView txtvenue = (TextView) findViewById(R.id.venue);
 
         // Locate the ImageView in singleitemview.xml
-        ImageView imgflag = (ImageView) findViewById(R.id.flag2);
+        ImageView imgflag = (ImageView) findViewById(R.id.flag);
 
         // Set results to the TextViews
         txtdesc.setText(desc);
@@ -59,6 +63,57 @@ public class singleitemview extends Activity {
         txtvenue.setText(venue);
         // Capture position and set results to the ImageView
         // Passes image_path images URL into ImageLoader.class
+
         imageLoader.DisplayImage(image_path, imgflag);
+        getActionBar();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater m = getMenuInflater();
+        m.inflate(R.menu.menu_file, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.sign_in) {
+            Intent intent = new Intent(singleitemview.this, sign_in.class);
+            startActivity(intent);
+        } else if (id == R.id.add_menu) {
+            Intent intent = new Intent(singleitemview.this, sign_up.class);
+            startActivity(intent);
+            // CustomDialog cd = new CustomDialog();
+            // cd.show(fm, "Dialog");
+
+            return true;
+        } else if (id == R.id.option_menu1) {
+            Intent intent = new Intent(singleitemview.this, NowOnSale.class);
+            startActivity(intent);
+
+        } else if (id == R.id.option_menu2) {
+            Intent intent = new Intent(singleitemview.this, UpcomingEvents.class);
+            startActivity(intent);
+
+        } else if (id == R.id.option_menu3) {
+            Intent intent = new Intent(singleitemview.this, PastEvents.class);
+            startActivity(intent);
+
+        } else if (id == R.id.option_menu4) {
+            Intent intent = new Intent(singleitemview.this, PastEvents.class);
+            startActivity(intent);
+
+        } else if (id == R.id.option_menu5) {
+            Intent intent = new Intent(singleitemview.this, PastEvents.class);
+            startActivity(intent);
+
+        } else if (id == R.id.option_menu6) {
+            Intent intent = new Intent(singleitemview.this, PastEvents.class);
+            startActivity(intent);
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
+
+

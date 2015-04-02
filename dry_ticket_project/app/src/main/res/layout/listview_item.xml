@@ -10,23 +10,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-
+        android:layout_alignParentLeft="true"
         android:padding="35dp" />
     <TextView
         android:id="@+id/detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:textSize="25sp"
         android:textStyle="italic"
-        android:textColor="#ffff1217"
-        android:padding="35dp"
-        android:layout_alignParentRight="true"
+        android:textColor="@color/red"
+        android:padding="25dp"
+
+        android:layout_toRightOf="@+id/flag"
 
        />
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:background="#ffff130c" />
 
 
 </RelativeLayout>
