@@ -16,8 +16,8 @@
         <activity android:name=".NowOnSale" android:label="Now On Sale" android:icon="@drawable/ic_launcher"></activity>
         <activity android:name=".UpcomingEvents" android:label="Upcoming Events" android:icon="@drawable/ic_launcher"></activity>
         <activity android:name=".PastEvents" android:label="Past Events" android:icon="@drawable/ic_launcher"></activity>
-        <activity android:name=".Venues" android:label="Venues" android:icon="@drawable/ic_launcher"></activity>
-        <activity android:name=".singleitemview" ></activity>
+        <activity android:name=".Venue" android:label="Venues" ></activity>
+        <activity android:name=".singleitemvenue" ></activity>
 
     </application>
 

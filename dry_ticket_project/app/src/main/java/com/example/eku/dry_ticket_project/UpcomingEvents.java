@@ -1,6 +1,5 @@
 package com.example.eku.dry_ticket_project;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -151,7 +150,7 @@ public class UpcomingEvents extends ActionBarActivity
             startActivity(intent);
 
         } else if (id == R.id.option_menu6) {
-            Intent intent = new Intent(UpcomingEvents.this, Venues.class);
+            Intent intent = new Intent(UpcomingEvents.this, Venue.class);
             startActivity(intent);
 
         }

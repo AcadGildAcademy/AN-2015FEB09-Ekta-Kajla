@@ -1,7 +1,7 @@
 package com.example.eku.dry_ticket_project;
 
 /**
- * Created by DELL on 21-03-2015.
+ * Created by DELL on 03-04-2015.
  */
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,22 +20,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-public class NowOnSale extends ActionBarActivity {
+public class Venue extends ActionBarActivity {
     // Declare Variables
     JSONObject jsonobject;
     JSONArray jsonarray;
     ListView listview;
-    ListViewAdapter adapter;
+    ListViewAdapter_venue adapter;
     ProgressDialog mProgressDialog;
     ArrayList<HashMap<String, String>> arraylist;
-    static String DESC = "desc";
-    static String DATE = "date";
-    static String TIME = "time";
-    static String PRICE = "price";
-    static String VENUE = "venue";
-    static String IMAGE_PATH = "image_path";
-    static String TITLE = "title";
+    static String TITLE = "venue_name";
 
+    static String DESC = "venue_desc";
+
+    static String IMAGE_PATH = "venue_image_path";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,7 +51,7 @@ public class NowOnSale extends ActionBarActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             // Create a progressdialog
-            mProgressDialog = new ProgressDialog(NowOnSale.this);
+            mProgressDialog = new ProgressDialog(Venue.this);
             // Set progressdialog title
             mProgressDialog.setTitle("Wait For Result");
             // Set progressdialog message
@@ -70,23 +67,19 @@ public class NowOnSale extends ActionBarActivity {
             arraylist = new ArrayList<HashMap<String, String>>();
             // Retrieve JSON Objects from the given URL address
             jsonobject = JSONfunctions
-                    .getJSONfromURL("http://bishasha.com/json/now_on_sale_events.php");
+                    .getJSONfromURL("http://bishasha.com/json/venue_event.php");
 
             try {
                 // Locate the array name in JSON
-                jsonarray = jsonobject.getJSONArray("events");
+                jsonarray = jsonobject.getJSONArray("venue_event");
 
                 for (int i = 0; i < jsonarray.length(); i++) {
                     HashMap<String, String> map = new HashMap<String, String>();
                     jsonobject = jsonarray.getJSONObject(i);
                     // Retrive JSON Objects
-                    map.put("desc", jsonobject.getString("desc"));
-                    map.put("date", jsonobject.getString("date"));
-                    map.put("time", jsonobject.getString("time"));
-                    map.put("price", jsonobject.getString("price"));
-                    map.put("venue", jsonobject.getString("venue"));
-                    map.put("image_path", jsonobject.getString("image_path"));
-                    map.put("title", jsonobject.getString("title"));
+                    map.put("venue_desc", jsonobject.getString("venue_desc"));
+                    map.put("venue_image_path", jsonobject.getString("venue_image_path"));
+                    map.put("venue_name", jsonobject.getString("venue_name"));
                     // Set the JSON Objects into the array
                     arraylist.add(map);
                 }
@@ -102,7 +95,7 @@ public class NowOnSale extends ActionBarActivity {
             // Locate the listview in listview_main.xml
             listview = (ListView) findViewById(R.id.listview);
             // Pass the results into ListViewAdapter.java
-            adapter = new ListViewAdapter(NowOnSale.this, arraylist);
+            adapter = new ListViewAdapter_venue(Venue.this, arraylist);
             // Set the adapter to the ListView
             listview.setAdapter(adapter);
             // Close the progressdialog
@@ -120,37 +113,37 @@ public class NowOnSale extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.sign_in) {
-            Intent intent = new Intent(NowOnSale.this, sign_in.class);
+            Intent intent = new Intent(Venue.this, sign_in.class);
             startActivity(intent);
         } else if (id == R.id.add_menu) {
-            Intent intent = new Intent(NowOnSale.this, sign_up.class);
+            Intent intent = new Intent(Venue.this, sign_up.class);
             startActivity(intent);
             // CustomDialog cd = new CustomDialog();
             // cd.show(fm, "Dialog");
 
             return true;
         } else if (id == R.id.option_menu1) {
-            Intent intent = new Intent(NowOnSale.this, NowOnSale.class);
+            Intent intent = new Intent(Venue.this, NowOnSale.class);
             startActivity(intent);
 
         } else if (id == R.id.option_menu2) {
-            Intent intent = new Intent(NowOnSale.this, UpcomingEvents.class);
+            Intent intent = new Intent(Venue.this, UpcomingEvents.class);
             startActivity(intent);
 
         } else if (id == R.id.option_menu3) {
-            Intent intent = new Intent(NowOnSale.this, PastEvents.class);
+            Intent intent = new Intent(Venue.this, PastEvents.class);
             startActivity(intent);
 
         } else if (id == R.id.option_menu4) {
-            Intent intent = new Intent(NowOnSale.this, PastEvents.class);
+            Intent intent = new Intent(Venue.this, PastEvents.class);
             startActivity(intent);
 
         } else if (id == R.id.option_menu5) {
-            Intent intent = new Intent(NowOnSale.this, PastEvents.class);
+            Intent intent = new Intent(Venue.this, PastEvents.class);
             startActivity(intent);
 
         } else if (id == R.id.option_menu6) {
-            Intent intent = new Intent(NowOnSale.this, Venue.class);
+            Intent intent = new Intent(Venue.this, Venue.class);
             startActivity(intent);
 
         }

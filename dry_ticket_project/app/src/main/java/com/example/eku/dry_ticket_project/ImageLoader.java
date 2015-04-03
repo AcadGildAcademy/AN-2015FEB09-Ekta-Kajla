@@ -125,6 +125,9 @@ public class ImageLoader {
         return null;
     }
 
+   // public void DispyImage(String venue_image_path, ImageView imgflag) {
+    //}
+
     // Task for the queue
     private class PhotoToLoad {
         public String url;

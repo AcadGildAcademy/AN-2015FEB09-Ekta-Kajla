@@ -1,6 +1,5 @@
 package com.example.eku.dry_ticket_project;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -279,7 +278,7 @@ public class sign_in extends ActionBarActivity {
             startActivity(intent);
 
         } else if (id == R.id.option_menu6) {
-            Intent intent = new Intent(sign_in.this, Venues.class);
+            Intent intent = new Intent(sign_in.this, Venue.class);
             startActivity(intent);
 
         }

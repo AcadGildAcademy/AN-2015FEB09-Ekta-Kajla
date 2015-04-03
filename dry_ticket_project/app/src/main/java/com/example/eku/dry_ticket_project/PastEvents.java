@@ -8,7 +8,7 @@ import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import android.app.Activity;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -150,7 +150,7 @@ public class PastEvents extends ActionBarActivity {
             startActivity(intent);
 
         } else if (id == R.id.option_menu6) {
-            Intent intent = new Intent(PastEvents.this, Venues.class);
+            Intent intent = new Intent(PastEvents.this,Venue.class);
             startActivity(intent);
 
         }

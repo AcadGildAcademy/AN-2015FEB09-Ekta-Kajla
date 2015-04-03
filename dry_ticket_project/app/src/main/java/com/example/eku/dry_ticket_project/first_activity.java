@@ -79,7 +79,7 @@ public class first_activity extends ActionBarActivity {
             startActivity(intent);
 
         } else if (id == R.id.option_menu6) {
-            Intent intent = new Intent(first_activity.this, Venues.class);
+            Intent intent = new Intent(first_activity.this, Venue.class);
             startActivity(intent);
 
         }
