@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -29,7 +30,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class sign_in extends ActionBarActivity {
+public class sign_in extends FragmentActivity {
     private ProgressDialog pDialog;
     EditText name, password;
     Button sign_in, logout;
@@ -112,6 +113,10 @@ public class sign_in extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 session.logoutUser();
+                Intent myIntent = new Intent(sign_in.this, first_activity.class);
+                myIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);// clear back stack
+                startActivity(myIntent);
+                finish();
 
             }
         });
@@ -179,8 +184,8 @@ public class sign_in extends ActionBarActivity {
                {
                    Log.d("Login Successful","Login Success");
                    Toast.makeText(getApplicationContext(),"login success",Toast.LENGTH_LONG).show();
-                  // Intent intent=new Intent (sign_in.this,Now_on_sale.class);
-                    //             startActivity (intent);
+                   Intent intent=new Intent (sign_in.this,first_activity.class);
+                                 startActivity (intent);
                      session.createUserLoginSession(username_value,userpass_value);
                    finish();
 

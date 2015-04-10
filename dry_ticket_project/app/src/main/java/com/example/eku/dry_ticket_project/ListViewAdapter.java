@@ -8,6 +8,8 @@ import java.util.HashMap;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -48,11 +50,8 @@ public class ListViewAdapter extends BaseAdapter {
     }
 
     public View getView(final int position, View convertView, ViewGroup parent) {
-        // Declare Variables
-      /*  TextView desc;
-        TextView date;
-        TextView time;
-*/        ImageView image_path;
+
+        ImageView image_path = null;
         TextView title;
 
         inflater = (LayoutInflater) context
@@ -62,23 +61,13 @@ public class ListViewAdapter extends BaseAdapter {
         // Get the position
         resultp = data.get(position);
 
-        // Locate the TextViews in listview_item.xml
-  /*      desc = (TextView) itemView.findViewById(R.id.date);
-        date = (TextView) itemView.findViewById(R.id.price);
-        time = (TextView) itemView.findViewById(R.id.time);
-  */      title = (TextView) itemView.findViewById(R.id.detail);
+        title = (TextView) itemView.findViewById(R.id.detail);
 
-        // Locate the ImageView in listview_item.xml
-       image_path = (ImageView) itemView.findViewById(R.id.flag);
-
-        // Capture position and set results to the TextViews
-   /*     desc.setText(resultp.get(NowOnSale.DESC));
-        date.setText(resultp.get(NowOnSale.DATE));
-        time.setText(resultp.get(NowOnSale.TIME));
-     */   title.setText(resultp.get(NowOnSale.TITLE));
-
+        title.setText(resultp.get(NowOnSale.TITLE));
+        Log.d("2222",title.getText().toString());
         // Capture position and set results to the ImageView
         // Passes image_path images URL into ImageLoader.class
+        image_path = (ImageView) itemView.findViewById(R.id.flag);
         imageLoader.DisplayImage(resultp.get(NowOnSale.IMAGE_PATH), image_path);
         // Capture ListView item click
         itemView.setOnClickListener(new OnClickListener() {
@@ -87,19 +76,19 @@ public class ListViewAdapter extends BaseAdapter {
             public void onClick(View arg0) {
                 // Get the position
                 resultp = data.get(position);
+                Bundle bundle=new Bundle();
                 Intent intent = new Intent(context, singleitemview.class);
                 // Pass all data desc
-                intent.putExtra("desc", resultp.get(NowOnSale.DESC));
-                // Pass all data date
-                intent.putExtra("date", resultp.get(NowOnSale.DATE));
-                // Pass all data time
-                intent.putExtra("time",resultp.get(NowOnSale.TIME));
-                intent.putExtra("price", resultp.get(NowOnSale.PRICE));
-                intent.putExtra("venue", resultp.get(NowOnSale.VENUE));
-                // Pass all data image_path
-                intent.putExtra("image_path", resultp.get(NowOnSale.IMAGE_PATH));
+                bundle.putString("image_path", resultp.get(NowOnSale.IMAGE_PATH));
+                bundle.putString("id", resultp.get(NowOnSale.ID));
+                bundle.putString("desc", resultp.get(NowOnSale.DESC));
+                bundle.putString("price", resultp.get(NowOnSale.PRICE));
+                bundle.putString("date", resultp.get(NowOnSale.DATE));
+                bundle.putString("time", resultp.get(NowOnSale.TIME));
+                bundle.putString("venue", resultp.get(NowOnSale.VENUE));
               //  intent.putExtra("detail",resultp.get(NowOnSale.DETAIL));
                 // Start SingleItemView Class
+                intent.putExtras(bundle);
                 context.startActivity(intent);
 
             }

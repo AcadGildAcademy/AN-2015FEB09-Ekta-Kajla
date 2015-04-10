@@ -13,6 +13,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -20,7 +21,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-public class Venue extends ActionBarActivity {
+public class Venue extends FragmentActivity {
     // Declare Variables
     JSONObject jsonobject;
     JSONArray jsonarray;
@@ -77,9 +78,10 @@ public class Venue extends ActionBarActivity {
                     HashMap<String, String> map = new HashMap<String, String>();
                     jsonobject = jsonarray.getJSONObject(i);
                     // Retrive JSON Objects
+                    map.put("venue_name", jsonobject.getString("venue_name"));
                     map.put("venue_desc", jsonobject.getString("venue_desc"));
                     map.put("venue_image_path", jsonobject.getString("venue_image_path"));
-                    map.put("venue_name", jsonobject.getString("venue_name"));
+
                     // Set the JSON Objects into the array
                     arraylist.add(map);
                 }
@@ -118,8 +120,6 @@ public class Venue extends ActionBarActivity {
         } else if (id == R.id.add_menu) {
             Intent intent = new Intent(Venue.this, sign_up.class);
             startActivity(intent);
-            // CustomDialog cd = new CustomDialog();
-            // cd.show(fm, "Dialog");
 
             return true;
         } else if (id == R.id.option_menu1) {
@@ -128,10 +128,12 @@ public class Venue extends ActionBarActivity {
 
         } else if (id == R.id.option_menu2) {
             Intent intent = new Intent(Venue.this, UpcomingEvents.class);
+            intent.putExtra("url_string", "http://bishasha.com/json/upcoming_events.php");
             startActivity(intent);
 
         } else if (id == R.id.option_menu3) {
             Intent intent = new Intent(Venue.this, PastEvents.class);
+            intent.putExtra("url_string", "http://bishasha.com/json/past_events.php");
             startActivity(intent);
 
         } else if (id == R.id.option_menu4) {

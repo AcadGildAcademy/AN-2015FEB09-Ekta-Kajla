@@ -5,6 +5,7 @@ package com.example.eku.dry_ticket_project;
  */
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,7 +13,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-class single_venue extends ActionBarActivity {
+public class single_venue extends FragmentActivity {
     // Declare Variables
     String venue_desc;
     String venue_name;
@@ -25,6 +26,7 @@ class single_venue extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         // Get the view from singleitemview.xml
         setContentView(R.layout.singleitemvenue);
+
 
         Intent i = getIntent();
         venue_desc = i.getStringExtra("venue_desc");
@@ -67,8 +69,6 @@ class single_venue extends ActionBarActivity {
         } else if (id == R.id.add_menu) {
             Intent intent = new Intent(single_venue.this, sign_up.class);
             startActivity(intent);
-            // CustomDialog cd = new CustomDialog();
-            // cd.show(fm, "Dialog");
 
             return true;
         } else if (id == R.id.option_menu1) {

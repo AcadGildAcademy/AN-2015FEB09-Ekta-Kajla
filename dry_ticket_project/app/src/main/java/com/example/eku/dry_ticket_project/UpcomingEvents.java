@@ -4,7 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,13 +21,13 @@ import java.util.HashMap;
 /**
  * Created by DELL on 28-03-2015.
  */
-public class UpcomingEvents extends ActionBarActivity
+public class UpcomingEvents extends FragmentActivity
 {
    // Declare Variables
     JSONObject jsonobject;
     JSONArray jsonarray;
     ListView listview;
-    U_ListViewAdapter adapter;
+   U_ListViewAdapter adapter;
     ProgressDialog mProgressDialog;
     ArrayList<HashMap<String, String>> arraylist;
     static String DESC = "desc";
@@ -36,13 +36,15 @@ public class UpcomingEvents extends ActionBarActivity
     static String VENUE = "venue";
     static String PRICE = "price";
     static String IMAGE_PATH = "image_path";
-
+String url_string1;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Get the view from listview_main.xml
         setContentView(R.layout.listview_main);
         // Execute DownloadJSON AsyncTask
+       Intent i=getIntent();
+        url_string1=i.getStringExtra("url_string");
         new DownloadJSON().execute();
         getActionBar();
     }
@@ -63,14 +65,13 @@ public class UpcomingEvents extends ActionBarActivity
             // Show progressdialog
             mProgressDialog.show();
         }
-
         @Override
         protected Void doInBackground(Void... params) {
             // Create an array
             arraylist = new ArrayList<HashMap<String, String>>();
             // Retrieve JSON Objects from the given URL address
             jsonobject = JSONfunctions
-                    .getJSONfromURL("http://bishasha.com/json/upcoming_events.php");
+                    .getJSONfromURL(url_string1);//"http://bishasha.com/json/upcoming_events.php");
 
             try {
                 // Locate the array name in JSON
@@ -135,10 +136,12 @@ public class UpcomingEvents extends ActionBarActivity
 
         } else if (id == R.id.option_menu2) {
             Intent intent = new Intent(UpcomingEvents.this, UpcomingEvents.class);
+            intent.putExtra("url_string","http://bishasha.com/json/upcoming_events.php");
             startActivity(intent);
 
         } else if (id == R.id.option_menu3) {
             Intent intent = new Intent(UpcomingEvents.this, PastEvents.class);
+            intent.putExtra("url_string", "http://bishasha.com/json/past_events.php");
             startActivity(intent);
 
         } else if (id == R.id.option_menu4) {
@@ -153,7 +156,13 @@ public class UpcomingEvents extends ActionBarActivity
             Intent intent = new Intent(UpcomingEvents.this, Venue.class);
             startActivity(intent);
 
+        }else if (id == R.id.option_menu7) {
+            Intent intent = new Intent(UpcomingEvents.this, ContactUs.class);
+            startActivity(intent);
+
+
         }
+
         return super.onOptionsItemSelected(item);
     }
 }

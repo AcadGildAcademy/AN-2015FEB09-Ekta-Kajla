@@ -7,7 +7,7 @@
 
     <item
         android:id="@+id/add_menu"
-         android:title="Menu"
+         android:title="SIGN UP"
         android:icon="@android:drawable/ic_input_add"
         android1:showAsAction="always">
 
@@ -23,48 +23,48 @@
     <item
         android:id="@+id/option_menu1"
         android:title="Now On Sale"
-        android:icon="@color/red"
+        android:icon="@drawable/item_selector"
         >
     </item>
     <item
         android:id="@+id/option_menu2"
         android:title="Upcoming Events"
-        android:icon="@color/red"
+        android:icon="@drawable/item_selector"
         >
 
     </item>
     <item
         android:id="@+id/option_menu3"
         android:title="Past Events"
-        android:icon="@color/red"
+        android:icon="@drawable/item_selector"
         >
 
     </item>
     <item
         android:id="@+id/option_menu4"
         android:title="Booking"
-        android:icon="@color/red"
+        android:icon="@drawable/item_selector"
         >
 
     </item>
     <item
         android:id="@+id/option_menu5"
         android:title="Artists"
-        android:icon="@color/red"
+        android:icon="@drawable/item_selector"
         >
 
     </item>
     <item
         android:id="@+id/option_menu6"
         android:title="Venue's"
-        android:icon="@color/red"
+        android:icon="@drawable/item_selector"
         >
 
     </item>
     <item
         android:id="@+id/option_menu7"
         android:title="Contacts us"
-        android:icon="@color/red"
+        android:icon="@drawable/item_selector"
         >
 
     </item>

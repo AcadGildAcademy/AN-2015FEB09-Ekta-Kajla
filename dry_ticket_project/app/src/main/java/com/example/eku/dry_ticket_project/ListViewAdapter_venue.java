@@ -60,14 +60,14 @@ public class ListViewAdapter_venue extends BaseAdapter {
 
         title = (TextView) itemView.findViewById(R.id.venue_name);
 
-        // Locate the ImageView in listview_item.xml
-       // image_path = (ImageView) itemView.findViewById(R.id.flag5);
+        // Locate the ImageView in listview_item       //
+        image_path = (ImageView) itemView.findViewById(R.id.flag5);
 
         title.setText(resultp.get(Venue.TITLE));
 
         // Capture position and set results to the ImageView
         // Passes image_path images URL into ImageLoader.class
-      //  imageLoader.DisplayImage(resultp.get(Venue.IMAGE_PATH), image_path);
+    //  imageLoader.DisplayImage(resultp.get(Venue.IMAGE_PATH), image_path);
         // Capture ListView item click
         itemView.setOnClickListener(new OnClickListener() {
 

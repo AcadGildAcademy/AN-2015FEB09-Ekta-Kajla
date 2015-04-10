@@ -47,7 +47,7 @@ public class ImageLoader {
             imageView.setImageBitmap(bitmap);
         else {
             queuePhoto(url, imageView);
-            imageView.setImageResource(stub_id);
+            imageView.setImageResource(R.drawable.abc_ab_share_pack_holo_dark);
         }
     }
 

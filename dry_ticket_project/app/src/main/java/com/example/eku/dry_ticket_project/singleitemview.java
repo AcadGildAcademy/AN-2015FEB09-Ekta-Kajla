@@ -5,15 +5,19 @@ package com.example.eku.dry_ticket_project;
  */
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class singleitemview extends ActionBarActivity {
+public class singleitemview extends FragmentActivity {
     // Declare Variables
+    String id;
     String desc;
     String date;
     String time;
@@ -21,6 +25,7 @@ public class singleitemview extends ActionBarActivity {
     String price;
     String image_path;
     String position;
+    Button buy_button;
     ImageLoader imageLoader = new ImageLoader(this);
 
     @Override
@@ -29,18 +34,17 @@ public class singleitemview extends ActionBarActivity {
         // Get the view from singleitemview.xml
         setContentView(R.layout.singleitemview);
 
-        Intent i = getIntent();
+      //  Intent i = getIntent();
         // Get the result of rank
-       desc = i.getStringExtra("desc");
-        // Get the result of country
-       date = i.getStringExtra("date");
-        // Get the result of population
-       time = i.getStringExtra("time");
+        id = getIntent().getExtras().getString("id");
+        desc = getIntent().getExtras().getString("desc");
+        date = getIntent().getExtras().getString("date");
+        time = getIntent().getExtras().getString("time");
+        price = getIntent().getExtras().getString("price");
+        venue = getIntent().getExtras().getString("venue");
 
-        price = i.getStringExtra("price");
-        venue = i.getStringExtra("venue");
         // Get the result of image_path
-        image_path = i.getStringExtra("image_path");
+        image_path = getIntent().getExtras().getString("image_path");
 
         // Locate the TextViews in singleitemview.xml
 
@@ -64,6 +68,16 @@ public class singleitemview extends ActionBarActivity {
         // Passes image_path images URL into ImageLoader.class
 
         imageLoader.DisplayImage(image_path, imgflag);
+        buy_button=(Button)findViewById(R.id.buy_ticket);
+        buy_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(singleitemview.this,Ticket_Booking.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("id",id);
+                startActivity(intent);
+            }
+        });
         getActionBar();
     }
     @Override

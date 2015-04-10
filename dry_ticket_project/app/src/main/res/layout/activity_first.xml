@@ -3,14 +3,26 @@
 android:id="@+id/frameLayout1"
 android:layout_width="fill_parent"
 android:layout_height="fill_parent" >
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_gravity="center"
+        android:src="@drawable/drytickets"
+        android:layout_marginTop="50dp"
+        />
 
-<TextView
-    android:id="@+id/txtdry"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/red"
-    android:gravity="center"
-    android:text="DRY TICKETS"
-    android:textSize="30dp"></TextView>
+
+     <TextView
+        android:id="@+id/txtdry"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/red"
+        android:gravity="center"
+        android:text="DRY TICKETS"
+
+        android:textStyle="italic"
+        android:textSize="30dp"></TextView>
+
 
 </FrameLayout>

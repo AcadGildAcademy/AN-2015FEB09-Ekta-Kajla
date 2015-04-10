@@ -13,14 +13,14 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-public class NowOnSale extends ActionBarActivity {
+public class NowOnSale extends FragmentActivity {
     // Declare Variables
     JSONObject jsonobject;
     JSONArray jsonarray;
@@ -28,6 +28,7 @@ public class NowOnSale extends ActionBarActivity {
     ListViewAdapter adapter;
     ProgressDialog mProgressDialog;
     ArrayList<HashMap<String, String>> arraylist;
+    static String ID = "id";
     static String DESC = "desc";
     static String DATE = "date";
     static String TIME = "time";
@@ -35,7 +36,7 @@ public class NowOnSale extends ActionBarActivity {
     static String VENUE = "venue";
     static String IMAGE_PATH = "image_path";
     static String TITLE = "title";
-
+    String url_string;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,8 @@ public class NowOnSale extends ActionBarActivity {
         // Get the view from listview_main.xml
         setContentView(R.layout.listview_main);
         // Execute DownloadJSON AsyncTask
+        // Intent i=getIntent();
+        // url_string=i.getStringExtra("url");
         new DownloadJSON().execute();
         getActionBar();
     }
@@ -68,18 +71,23 @@ public class NowOnSale extends ActionBarActivity {
         protected Void doInBackground(Void... params) {
             // Create an array
             arraylist = new ArrayList<HashMap<String, String>>();
+            //   ServiceHandler sh=new ServiceHandler();
             // Retrieve JSON Objects from the given URL address
             jsonobject = JSONfunctions
                     .getJSONfromURL("http://bishasha.com/json/now_on_sale_events.php");
-
+            Log.d("object-->", "" + jsonobject);
             try {
                 // Locate the array name in JSON
                 jsonarray = jsonobject.getJSONArray("events");
-
+                Log.d("array-->", "" + jsonarray);
                 for (int i = 0; i < jsonarray.length(); i++) {
                     HashMap<String, String> map = new HashMap<String, String>();
+
                     jsonobject = jsonarray.getJSONObject(i);
                     // Retrive JSON Objects
+                    Log.d("object 2-->", "" + jsonobject);
+
+                    map.put("id", jsonobject.getString("id"));
                     map.put("desc", jsonobject.getString("desc"));
                     map.put("date", jsonobject.getString("date"));
                     map.put("time", jsonobject.getString("time"));
@@ -109,6 +117,7 @@ public class NowOnSale extends ActionBarActivity {
             mProgressDialog.dismiss();
         }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater m = getMenuInflater();
@@ -125,8 +134,6 @@ public class NowOnSale extends ActionBarActivity {
         } else if (id == R.id.add_menu) {
             Intent intent = new Intent(NowOnSale.this, sign_up.class);
             startActivity(intent);
-            // CustomDialog cd = new CustomDialog();
-            // cd.show(fm, "Dialog");
 
             return true;
         } else if (id == R.id.option_menu1) {
@@ -135,10 +142,12 @@ public class NowOnSale extends ActionBarActivity {
 
         } else if (id == R.id.option_menu2) {
             Intent intent = new Intent(NowOnSale.this, UpcomingEvents.class);
+            intent.putExtra("url_string", "http://bishasha.com/json/upcoming_events.php");
             startActivity(intent);
 
         } else if (id == R.id.option_menu3) {
             Intent intent = new Intent(NowOnSale.this, PastEvents.class);
+            intent.putExtra("url_string", "http://bishasha.com/json/past_events.php");
             startActivity(intent);
 
         } else if (id == R.id.option_menu4) {
@@ -153,8 +162,13 @@ public class NowOnSale extends ActionBarActivity {
             Intent intent = new Intent(NowOnSale.this, Venue.class);
             startActivity(intent);
 
+        } else if (id == R.id.option_menu7) {
+            Intent intent = new Intent(NowOnSale.this, ContactUs.class);
+            startActivity(intent);
+
+
         }
         return super.onOptionsItemSelected(item);
     }
-}
 
+}

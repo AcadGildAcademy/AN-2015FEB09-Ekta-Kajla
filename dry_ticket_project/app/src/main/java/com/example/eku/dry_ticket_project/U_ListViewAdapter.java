@@ -3,6 +3,7 @@ package com.example.eku.dry_ticket_project;
 /**
  * Created by DELL on 28-03-2015.
  */
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -51,12 +52,7 @@ public class U_ListViewAdapter extends BaseAdapter {
         // Declare Variables
         TextView desc;
         TextView date;
-        TextView time;
-        TextView price;
-        TextView venue;
-
-        ImageView image_path;
-        //  TextView detail;
+        ImageView image_path = null;
 
         inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -65,33 +61,22 @@ public class U_ListViewAdapter extends BaseAdapter {
         // Get the position
         resultp = data.get(position);
 
-        // Locate the TextViews in listview_item.xml
-        desc = (TextView) itemView.findViewById(R.id.desc2);
+        // Locate the TextViews in listview_item.xmlm.xml
+         desc = (TextView) itemView.findViewById(R.id.desc2);
         date = (TextView) itemView.findViewById(R.id.date2);
-      //  time = (TextView) itemView.findViewById(R.id.time2);
-       // price = (TextView) itemView.findViewById(R.id.price2);
-       // venue = (TextView) itemView.findViewById(R.id.venue2);
 
-
-        //      detail = (TextView) itemView.findViewById(R.id.detail);
-
-        // Locate the ImageView in listview_item.xml
-        image_path = (ImageView) itemView.findViewById(R.id.flag2);
+        // Locate the ImageView in listview_item.xmlm.xml
+         image_path = (ImageView) itemView.findViewById(R.id.flag2);
 
         // Capture position and set results to the TextViews
         desc.setText(resultp.get(UpcomingEvents.DESC));
         date.setText(resultp.get(UpcomingEvents.DATE));
-      //  time.setText(resultp.get(UpcomingEvents.TIME));
-      //  price.setText(resultp.get(UpcomingEvents.PRICE));
-       // venue.setText(resultp.get(UpcomingEvents.VENUE));
-
-        // detail.setText(resultp.get(NowOnSale.DETAIL));
 
         // Capture position and set results to the ImageView
         // Passes image_path images URL into ImageLoader.class
         imageLoader.DisplayImage(resultp.get(UpcomingEvents.IMAGE_PATH), image_path);
         // Capture ListView item click
-     itemView.setOnClickListener(new OnClickListener() {
+    /* itemView.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
@@ -114,6 +99,6 @@ public class U_ListViewAdapter extends BaseAdapter {
 
             }
         });
-        return itemView;
+      */  return itemView;
     }
 }

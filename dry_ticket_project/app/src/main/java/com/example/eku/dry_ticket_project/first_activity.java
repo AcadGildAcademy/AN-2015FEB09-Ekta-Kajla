@@ -1,8 +1,8 @@
 package com.example.eku.dry_ticket_project;
 
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,8 +14,8 @@ import android.widget.TextView;
 /**
  * Created by DELL on 11-03-2015.
  */
-public class first_activity extends ActionBarActivity {
-    FragmentManager fm = getFragmentManager();
+public class first_activity extends FragmentActivity{
+    // FragmentManager fm = getFragmentManager();
     TextView dry;
     Button stop;
 
@@ -31,7 +31,8 @@ public class first_activity extends ActionBarActivity {
                 dry.setVisibility(View.GONE);
             }
         });
-        getActionBar();
+        // getSupportActionBar();
+       // getActionBar();
         // changing action bar color
         //  getActionBar().setBackgroundDrawable(
         //        new ColorDrawable(Color.parseColor("#ffff1217")));
@@ -64,10 +65,12 @@ public class first_activity extends ActionBarActivity {
 
         } else if (id == R.id.option_menu2) {
             Intent intent = new Intent(first_activity.this, UpcomingEvents.class);
+            intent.putExtra("url_string", "http://bishasha.com/json/upcoming_events.php");
             startActivity(intent);
 
         } else if (id == R.id.option_menu3) {
             Intent intent = new Intent(first_activity.this, PastEvents.class);
+            intent.putExtra("url_string", "http://bishasha.com/json/past_events.php");
             startActivity(intent);
 
         } else if (id == R.id.option_menu4) {
@@ -82,7 +85,11 @@ public class first_activity extends ActionBarActivity {
             Intent intent = new Intent(first_activity.this, Venue.class);
             startActivity(intent);
 
-        }
-        return super.onOptionsItemSelected(item);
+        } else if (id == R.id.option_menu7) {
+            Intent intent = new Intent(first_activity.this, ContactUs.class);
+            startActivity(intent);
+
+
+        } return super.onOptionsItemSelected(item);
     }
 }

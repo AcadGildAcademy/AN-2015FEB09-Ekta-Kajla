@@ -13,28 +13,22 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-public class PastEvents extends ActionBarActivity {
+public class PastEvents extends FragmentActivity {
     // Declare Variables
     JSONObject jsonobject;
     JSONArray jsonarray;
     ListView listview;
-    P_ListViewAdapter adapter;
+    U_ListViewAdapter adapter;
     ProgressDialog mProgressDialog;
     ArrayList<HashMap<String, String>> arraylist;
-    static String DESC = "desc";
-    static String DATE = "date";
-    static String TIME = "time";
-    static String PRICE = "price";
-    static String VENUE = "venue";
-    static String IMAGE_PATH = "image_path";
- //   static String DETAIL = "detail";
+   String url_string1;
 
 
     @Override
@@ -43,6 +37,8 @@ public class PastEvents extends ActionBarActivity {
         // Get the view from listview_main.xml
         setContentView(R.layout.listview_main);
         // Execute DownloadJSON AsyncTask
+        Intent i=getIntent();
+        url_string1=i.getStringExtra("url_string");
         new DownloadJSON().execute();
         getActionBar();
     }
@@ -70,7 +66,7 @@ public class PastEvents extends ActionBarActivity {
             arraylist = new ArrayList<HashMap<String, String>>();
             // Retrieve JSON Objects from the given URL address
             jsonobject = JSONfunctions
-                    .getJSONfromURL("http://bishasha.com/json/past_events.php");
+                    .getJSONfromURL(url_string1);//"http://bishasha.com/json/past_events.php");
 
             try {
                 // Locate the array name in JSON
@@ -102,7 +98,7 @@ public class PastEvents extends ActionBarActivity {
             // Locate the listview in listview_main.xml
             listview = (ListView) findViewById(R.id.listview);
             // Pass the results into ListViewAdapter.java
-            adapter = new P_ListViewAdapter(PastEvents.this, arraylist);
+            adapter = new U_ListViewAdapter(PastEvents.this, arraylist);
             // Set the adapter to the ListView
             listview.setAdapter(adapter);
             // Close the progressdialog
@@ -135,10 +131,13 @@ public class PastEvents extends ActionBarActivity {
 
         } else if (id == R.id.option_menu2) {
             Intent intent = new Intent(PastEvents.this, UpcomingEvents.class);
+            intent.putExtra("url_string", "http://bishasha.com/json/upcoming_events.php");
+
             startActivity(intent);
 
         } else if (id == R.id.option_menu3) {
             Intent intent = new Intent(PastEvents.this, PastEvents.class);
+            intent.putExtra("url_string", "http://bishasha.com/json/past_events.php");
             startActivity(intent);
 
         } else if (id == R.id.option_menu4) {
@@ -153,8 +152,14 @@ public class PastEvents extends ActionBarActivity {
             Intent intent = new Intent(PastEvents.this,Venue.class);
             startActivity(intent);
 
+        }else if (id == R.id.option_menu7) {
+            Intent intent = new Intent(PastEvents.this, ContactUs.class);
+            startActivity(intent);
+
+
         }
         return super.onOptionsItemSelected(item);
+
     }
 }
 
