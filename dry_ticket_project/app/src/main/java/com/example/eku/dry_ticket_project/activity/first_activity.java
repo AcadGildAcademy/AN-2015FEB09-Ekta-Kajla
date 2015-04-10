@@ -3,7 +3,6 @@ package com.example.eku.dry_ticket_project.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,7 +15,7 @@ import com.example.eku.dry_ticket_project.R;
 /**
  * Created by DELL on 11-03-2015.
  */
-public class first_activity extends ActionBarActivity{
+public class first_activity extends FragmentActivity{
     // FragmentManager fm = getFragmentManager();
     TextView dry;
     Button stop;
@@ -33,7 +32,7 @@ public class first_activity extends ActionBarActivity{
                 dry.setVisibility(View.GONE);
             }
         });
-        getSupportActionBar();
+        // getSupportActionBar();
        // getActionBar();
         // changing action bar color
         //  getActionBar().setBackgroundDrawable(

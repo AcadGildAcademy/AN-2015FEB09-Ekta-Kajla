@@ -14,7 +14,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,7 +24,7 @@ import com.example.eku.dry_ticket_project.utils.JSONfunctions;
 import com.example.eku.dry_ticket_project.adapter.ListViewAdapter_venue;
 import com.example.eku.dry_ticket_project.R;
 
-public class Venue extends ActionBarActivity {
+public class Venue extends FragmentActivity {
     // Declare Variables
     JSONObject jsonobject;
     JSONArray jsonarray;
@@ -46,7 +45,7 @@ public class Venue extends ActionBarActivity {
         setContentView(R.layout.listview_main);
         // Execute DownloadJSON AsyncTask
         new DownloadJSON().execute();
-        getSupportActionBar();
+        getActionBar();
     }
 
     // DownloadJSON AsyncTask

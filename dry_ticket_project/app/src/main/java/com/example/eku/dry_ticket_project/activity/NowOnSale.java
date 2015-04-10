@@ -14,7 +14,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,7 +24,7 @@ import com.example.eku.dry_ticket_project.utils.JSONfunctions;
 import com.example.eku.dry_ticket_project.adapter.ListViewAdapter;
 import com.example.eku.dry_ticket_project.R;
 
-public class NowOnSale extends ActionBarActivity {
+public class NowOnSale extends FragmentActivity {
     // Declare Variables
     JSONObject jsonobject;
     JSONArray jsonarray;
@@ -52,7 +51,7 @@ public class NowOnSale extends ActionBarActivity {
         // Intent i=getIntent();
         // url_string=i.getStringExtra("url");
         new DownloadJSON().execute();
-        getSupportActionBar();
+        getActionBar();
     }
 
     // DownloadJSON AsyncTask

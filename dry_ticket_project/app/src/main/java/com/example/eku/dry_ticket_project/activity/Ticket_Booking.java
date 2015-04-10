@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.widget.ListView;
 
@@ -22,7 +21,7 @@ import java.util.HashMap;
 /**
  * Created by DELL on 10-04-2015.
  */
-public class Ticket_Booking extends ActionBarActivity {
+public class Ticket_Booking extends FragmentActivity {
     // Declare Variables
     JSONObject jsonobject;
     JSONArray jsonarray;
@@ -40,7 +39,7 @@ public class Ticket_Booking extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ticket_listview);
         new DownloadJSON().execute();
-       getSupportActionBar();
+        getActionBar();
     }
     // DownloadJSON AsyncTask
     private class DownloadJSON extends AsyncTask<Void, Void, Void>

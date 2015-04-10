@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,7 +25,7 @@ import java.util.HashMap;
 /**
  * Created by DELL on 28-03-2015.
  */
-public class UpcomingEvents extends ActionBarActivity
+public class UpcomingEvents extends FragmentActivity
 {
    // Declare Variables
     JSONObject jsonobject;
@@ -51,7 +50,7 @@ String url_string1;
        Intent i=getIntent();
         url_string1=i.getStringExtra("url_string");
         new DownloadJSON().execute();
-       getSupportActionBar();
+        getActionBar();
     }
 
     // DownloadJSON AsyncTask

@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,7 +18,7 @@ import android.widget.TextView;
 import com.example.eku.dry_ticket_project.utils.ImageLoader;
 import com.example.eku.dry_ticket_project.R;
 
-public class singleitemview extends ActionBarActivity {
+public class singleitemview extends FragmentActivity {
     // Declare Variables
     String id;
     String desc;
@@ -82,7 +81,7 @@ public class singleitemview extends ActionBarActivity {
                 startActivity(intent);
             }
         });
-       getSupportActionBar();
+        getActionBar();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

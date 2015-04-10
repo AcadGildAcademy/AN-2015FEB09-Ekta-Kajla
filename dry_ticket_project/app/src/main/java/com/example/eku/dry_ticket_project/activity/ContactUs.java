@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,7 +34,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ContactUs extends ActionBarActivity {
+public class ContactUs extends FragmentActivity {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     EditText fullname,fullphone,fullemail,fullmessage;
@@ -58,15 +57,15 @@ public class ContactUs extends ActionBarActivity {
         fullemail=(EditText)findViewById(R.id.contactus3);
         fullmessage=(EditText)findViewById(R.id.contactus4);
         sendbutton=(Button)findViewById(R.id.send);
-        if (!session.isUserLoggedIn())
-        {
-            sendbutton.setEnabled(false);
+/*       if (!session.isUserLoggedIn())
+       {
+           sendbutton.setEnabled(false);
         }
         else{
             Intent intent=new Intent(ContactUs.this,sign_in.class);
             startActivity(intent);
-        }
-
+       }
+*/
         sendbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,7 +94,7 @@ public class ContactUs extends ActionBarActivity {
                 }
             }
         });
-       getSupportActionBar();
+        getActionBar();
     }
 
 

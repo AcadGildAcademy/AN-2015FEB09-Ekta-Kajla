@@ -6,7 +6,6 @@ package com.example.eku.dry_ticket_project.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,7 +15,7 @@ import android.widget.TextView;
 import com.example.eku.dry_ticket_project.utils.ImageLoader;
 import com.example.eku.dry_ticket_project.R;
 
-public class single_venue extends ActionBarActivity {
+public class single_venue extends FragmentActivity {
     // Declare Variables
     String venue_desc;
     String venue_name;
@@ -54,7 +53,7 @@ public class single_venue extends ActionBarActivity {
         // Passes image_path images URL into ImageLoader.class
     imageLoader.DisplayImage(venue_image_path,imgflag);
 
-       getSupportActionBar();
+        getActionBar();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -7,7 +7,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -34,7 +33,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class sign_in extends ActionBarActivity {
+public class sign_in extends FragmentActivity {
     private ProgressDialog pDialog;
     EditText name, password;
     Button sign_in, logout;
@@ -66,7 +65,7 @@ public class sign_in extends ActionBarActivity {
        session = new UserSession(getApplicationContext());
 
         loadMySavePreferences();
-        getSupportActionBar();
+        getActionBar();
 
         if(session.isUserLoggedIn())
         {
