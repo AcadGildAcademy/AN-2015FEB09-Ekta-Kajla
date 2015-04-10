@@ -1,4 +1,4 @@
-package com.example.eku.dry_ticket_project;
+package com.example.eku.dry_ticket_project.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -18,6 +18,10 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.eku.dry_ticket_project.R;
+import com.example.eku.dry_ticket_project.utils.ServiceHandler;
+import com.example.eku.dry_ticket_project.pref.UserSession;
+
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,7 +34,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class sign_in extends FragmentActivity {
+public class sign_in extends ActionBarActivity {
     private ProgressDialog pDialog;
     EditText name, password;
     Button sign_in, logout;
@@ -62,7 +66,7 @@ public class sign_in extends FragmentActivity {
        session = new UserSession(getApplicationContext());
 
         loadMySavePreferences();
-        getActionBar();
+        getSupportActionBar();
 
         if(session.isUserLoggedIn())
         {

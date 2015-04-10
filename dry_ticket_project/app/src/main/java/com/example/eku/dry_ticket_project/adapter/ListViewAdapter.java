@@ -1,4 +1,4 @@
-package com.example.eku.dry_ticket_project;
+package com.example.eku.dry_ticket_project.adapter;
 
 /**
  * Created by DELL on 21-03-2015.
@@ -17,6 +17,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.eku.dry_ticket_project.utils.ImageLoader;
+import com.example.eku.dry_ticket_project.R;
+import com.example.eku.dry_ticket_project.activity.NowOnSale;
+import com.example.eku.dry_ticket_project.activity.singleitemview;
 
 public class ListViewAdapter extends BaseAdapter {
 

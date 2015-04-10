@@ -1,11 +1,16 @@
-package com.example.eku.dry_ticket_project;
+package com.example.eku.dry_ticket_project.activity;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.widget.ListView;
+
+import com.example.eku.dry_ticket_project.utils.JSONfunctions;
+import com.example.eku.dry_ticket_project.adapter.ListViewAdapter_tickets;
+import com.example.eku.dry_ticket_project.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,16 +31,16 @@ public class Ticket_Booking extends ActionBarActivity {
     ProgressDialog mProgressDialog;
     ArrayList<HashMap<String, String>> arraylist;
     static String ID = "id";
-    static String TYPE_CATEGORY = "type_category";
-    static String PRICE = "price";
-    static String EVENT_ID = "event_id";
-    static String EVENT_NAME = "event_name";
+    public static String TYPE_CATEGORY = "type_category";
+    public static String PRICE = "price";
+    public static String EVENT_ID = "event_id";
+    public static String EVENT_NAME = "event_name";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ticket_listview);
         new DownloadJSON().execute();
-        getActionBar();
+       getSupportActionBar();
     }
     // DownloadJSON AsyncTask
     private class DownloadJSON extends AsyncTask<Void, Void, Void>

@@ -1,4 +1,4 @@
-package com.example.eku.dry_ticket_project;
+package com.example.eku.dry_ticket_project.utils;
 
 /**
  * Created by DELL on 21-03-2015.

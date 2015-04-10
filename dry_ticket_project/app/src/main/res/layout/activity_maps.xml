@@ -11,7 +11,7 @@
     android:layout_width="150dp"
     android:layout_height="160dp"
     android:id="@+id/map"
-    tools:context="com.example.eku.dry_ticket_project.ContactUs"
+    tools:context="com.example.eku.dry_ticket_project.activity.ContactUs"
     android:name="com.google.android.gms.maps.SupportMapFragment" />
 
     <TextView

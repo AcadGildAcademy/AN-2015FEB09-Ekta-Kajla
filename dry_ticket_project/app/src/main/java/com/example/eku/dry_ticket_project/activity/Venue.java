@@ -1,4 +1,4 @@
-package com.example.eku.dry_ticket_project;
+package com.example.eku.dry_ticket_project.activity;
 
 /**
  * Created by DELL on 03-04-2015.
@@ -21,7 +21,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-public class Venue extends FragmentActivity {
+import com.example.eku.dry_ticket_project.utils.JSONfunctions;
+import com.example.eku.dry_ticket_project.adapter.ListViewAdapter_venue;
+import com.example.eku.dry_ticket_project.R;
+
+public class Venue extends ActionBarActivity {
     // Declare Variables
     JSONObject jsonobject;
     JSONArray jsonarray;
@@ -29,11 +33,11 @@ public class Venue extends FragmentActivity {
     ListViewAdapter_venue adapter;
     ProgressDialog mProgressDialog;
     ArrayList<HashMap<String, String>> arraylist;
-    static String TITLE = "venue_name";
+    public static String TITLE = "venue_name";
 
-    static String DESC = "venue_desc";
+    public static String DESC = "venue_desc";
 
-    static String IMAGE_PATH = "venue_image_path";
+    public static String IMAGE_PATH = "venue_image_path";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,7 +46,7 @@ public class Venue extends FragmentActivity {
         setContentView(R.layout.listview_main);
         // Execute DownloadJSON AsyncTask
         new DownloadJSON().execute();
-        getActionBar();
+        getSupportActionBar();
     }
 
     // DownloadJSON AsyncTask

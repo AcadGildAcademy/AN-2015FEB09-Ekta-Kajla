@@ -1,4 +1,4 @@
-package com.example.eku.dry_ticket_project;
+package com.example.eku.dry_ticket_project.activity;
 
 /**
  * Created by DELL on 03-04-2015.
@@ -13,7 +13,10 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class single_venue extends FragmentActivity {
+import com.example.eku.dry_ticket_project.utils.ImageLoader;
+import com.example.eku.dry_ticket_project.R;
+
+public class single_venue extends ActionBarActivity {
     // Declare Variables
     String venue_desc;
     String venue_name;
@@ -51,7 +54,7 @@ public class single_venue extends FragmentActivity {
         // Passes image_path images URL into ImageLoader.class
     imageLoader.DisplayImage(venue_image_path,imgflag);
 
-        getActionBar();
+       getSupportActionBar();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

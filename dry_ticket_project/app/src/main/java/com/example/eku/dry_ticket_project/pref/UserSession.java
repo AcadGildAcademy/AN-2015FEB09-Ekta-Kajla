@@ -1,4 +1,4 @@
-package com.example.eku.dry_ticket_project;
+package com.example.eku.dry_ticket_project.pref;
 
 /**
  * Created by DELL on 28-03-2015.
@@ -9,6 +9,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+
+import com.example.eku.dry_ticket_project.activity.sign_in;
 
 public class UserSession {
 

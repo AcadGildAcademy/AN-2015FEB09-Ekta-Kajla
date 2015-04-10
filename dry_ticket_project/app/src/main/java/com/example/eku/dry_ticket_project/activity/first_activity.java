@@ -1,4 +1,4 @@
-package com.example.eku.dry_ticket_project;
+package com.example.eku.dry_ticket_project.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.eku.dry_ticket_project.R;
+
 /**
  * Created by DELL on 11-03-2015.
  */
-public class first_activity extends FragmentActivity{
+public class first_activity extends ActionBarActivity{
     // FragmentManager fm = getFragmentManager();
     TextView dry;
     Button stop;
@@ -31,7 +33,7 @@ public class first_activity extends FragmentActivity{
                 dry.setVisibility(View.GONE);
             }
         });
-        // getSupportActionBar();
+        getSupportActionBar();
        // getActionBar();
         // changing action bar color
         //  getActionBar().setBackgroundDrawable(

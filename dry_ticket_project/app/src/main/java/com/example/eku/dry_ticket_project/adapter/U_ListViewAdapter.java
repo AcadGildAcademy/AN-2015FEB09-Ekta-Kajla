@@ -1,4 +1,4 @@
-package com.example.eku.dry_ticket_project;
+package com.example.eku.dry_ticket_project.adapter;
 
 /**
  * Created by DELL on 28-03-2015.
@@ -8,14 +8,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.eku.dry_ticket_project.utils.ImageLoader;
+import com.example.eku.dry_ticket_project.R;
+import com.example.eku.dry_ticket_project.activity.UpcomingEvents;
 
 public class U_ListViewAdapter extends BaseAdapter {
 

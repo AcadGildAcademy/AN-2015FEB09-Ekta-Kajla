@@ -1,4 +1,4 @@
-package com.example.eku.dry_ticket_project;
+package com.example.eku.dry_ticket_project.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.eku.dry_ticket_project.utils.ImageLoader;
+import com.example.eku.dry_ticket_project.R;
+import com.example.eku.dry_ticket_project.activity.Seat_allocation;
+import com.example.eku.dry_ticket_project.activity.Ticket_Booking;
 
 import java.util.ArrayList;
 import java.util.HashMap;

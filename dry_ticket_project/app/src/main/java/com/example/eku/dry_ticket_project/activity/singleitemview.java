@@ -1,8 +1,9 @@
-package com.example.eku.dry_ticket_project;
+package com.example.eku.dry_ticket_project.activity;
 
 /**
  * Created by DELL on 21-03-2015.
  */
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -15,7 +16,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class singleitemview extends FragmentActivity {
+import com.example.eku.dry_ticket_project.utils.ImageLoader;
+import com.example.eku.dry_ticket_project.R;
+
+public class singleitemview extends ActionBarActivity {
     // Declare Variables
     String id;
     String desc;
@@ -61,24 +65,24 @@ public class singleitemview extends FragmentActivity {
         txtdesc.setText(desc);
         txtdate.setText(date);
         txttime.setText(time);
-
         txtprice.setText(price);
         txtvenue.setText(venue);
         // Capture position and set results to the ImageView
         // Passes image_path images URL into ImageLoader.class
 
         imageLoader.DisplayImage(image_path, imgflag);
+        final Context context = this;
         buy_button=(Button)findViewById(R.id.buy_ticket);
         buy_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(singleitemview.this,Ticket_Booking.class);
+                Intent intent=new Intent(context,Ticket_Booking.class);
                 Bundle bundle=new Bundle();
                 bundle.putString("id",id);
                 startActivity(intent);
             }
         });
-        getActionBar();
+       getSupportActionBar();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

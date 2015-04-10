@@ -1,4 +1,4 @@
-package com.example.eku.dry_ticket_project;
+package com.example.eku.dry_ticket_project.adapter;
 
 /**
  * Created by DELL on 03-04-2015.
@@ -15,6 +15,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.eku.dry_ticket_project.utils.ImageLoader;
+import com.example.eku.dry_ticket_project.R;
+import com.example.eku.dry_ticket_project.activity.Venue;
+import com.example.eku.dry_ticket_project.activity.single_venue;
 
 public class ListViewAdapter_venue extends BaseAdapter {
     // Declare Variables

@@ -1,4 +1,4 @@
-package com.example.eku.dry_ticket_project;
+package com.example.eku.dry_ticket_project.activity;
 
 /**
  * Created by DELL on 28-03-2015.
@@ -14,13 +14,18 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-public class PastEvents extends FragmentActivity {
+import com.example.eku.dry_ticket_project.utils.JSONfunctions;
+import com.example.eku.dry_ticket_project.R;
+import com.example.eku.dry_ticket_project.adapter.U_ListViewAdapter;
+
+public class PastEvents extends ActionBarActivity {
     // Declare Variables
     JSONObject jsonobject;
     JSONArray jsonarray;
@@ -40,7 +45,7 @@ public class PastEvents extends FragmentActivity {
         Intent i=getIntent();
         url_string1=i.getStringExtra("url_string");
         new DownloadJSON().execute();
-        getActionBar();
+       getSupportActionBar();
     }
 
     // DownloadJSON AsyncTask

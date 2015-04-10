@@ -1,24 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" >
-        <!--parent="Theme.AppCompat.Light.DarkActionBar"> -->
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
 
 
-        <item name="android:actionBarStyle">@style/CustomActionBar</item>
-        <item name="android:popupMenuStyle">@style/CustomPopupMenu</item>
-    </style>
+        <item name="android:itemBackground">@drawable/item_selector</item>
 
-
-    <style name="CustomActionBar" parent="@android:style/Widget.ActionBar">
-        <item name="android:indeterminateProgressStyle">@android:style/Widget.ProgressBar.Small.Inverse</item>
-        <item name="android:background">@color/red</item>
-    </style>
-
-    <style name="CustomPopupMenu" parent="@android:style/Widget.ListPopupWindow">
         <item name="android:popupBackground">@drawable/item_selector</item>
-        <item name="android:textColor">@color/orange</item>
+
+        <item name="actionBarStyle">@style/MyActionBar</item>
+
+    </style>
+
+
+
+
+    <!-- ActionBar styles -->
+
+    <style name="MyActionBar"
+
+        parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+
+
+
+        <!-- Support library compatibility -->
+
+        <item name="background">@color/red</item>
 
     </style>
 

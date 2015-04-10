@@ -18,7 +18,7 @@
 
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity android:name=".first_activity" android:icon="@drawable/drylogo" >
+        <activity android:name=".activity.first_activity" android:icon="@drawable/drylogo" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,40 +26,40 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".sign_in"
+            android:name=".activity.sign_in"
             android:icon="@drawable/d_logo"
             android:label="Sign In" />
         <activity
-            android:name=".sign_up"
+            android:name=".activity.sign_up"
             android:icon="@drawable/d_logo"
             android:label="Sign Up" />
         <activity
-            android:name=".NowOnSale"
+            android:name=".activity.NowOnSale"
             android:icon="@drawable/d_logo"
             android:label="Now On Sale" />
         <activity
-            android:name=".UpcomingEvents"
+            android:name=".activity.UpcomingEvents"
             android:icon="@drawable/d_logo"
             android:label="Upcoming Events" />
         <activity
-            android:name=".PastEvents"
+            android:name=".activity.PastEvents"
             android:icon="@drawable/d_logo"
             android:label="Past Events" />
         <activity
-            android:name=".Venue"
+            android:name=".activity.Venue"
             android:icon="@drawable/d_logo"
             android:label="Venues" />
  >
         <activity
-            android:name=".singleitemview"
+            android:name=".activity.singleitemview"
             android:icon="@drawable/d_logo"
              />
         <activity
-        android:name=".single_venue"
+        android:name=".activity.single_venue"
         android:icon="@drawable/d_logo"
         />
         <activity
-            android:name=".Ticket_Booking"
+            android:name=".activity.Ticket_Booking"
             android:icon="@drawable/d_logo"/>
 
 
@@ -71,7 +71,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".ContactUs"
+            android:name=".activity.ContactUs"
             android:label="@string/title_activity_maps"
             android:icon="@drawable/d_logo">
         </activity>

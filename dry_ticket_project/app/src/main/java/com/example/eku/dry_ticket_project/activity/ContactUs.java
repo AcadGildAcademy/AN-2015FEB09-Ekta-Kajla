@@ -1,10 +1,11 @@
-package com.example.eku.dry_ticket_project;
+package com.example.eku.dry_ticket_project.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,6 +15,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.eku.dry_ticket_project.R;
+import com.example.eku.dry_ticket_project.utils.ServiceHandler;
+import com.example.eku.dry_ticket_project.pref.UserSession;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -31,7 +35,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ContactUs extends FragmentActivity {
+public class ContactUs extends ActionBarActivity {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     EditText fullname,fullphone,fullemail,fullmessage;
@@ -54,12 +58,14 @@ public class ContactUs extends FragmentActivity {
         fullemail=(EditText)findViewById(R.id.contactus3);
         fullmessage=(EditText)findViewById(R.id.contactus4);
         sendbutton=(Button)findViewById(R.id.send);
-      /*  if (session.logoutUser());
+        if (!session.isUserLoggedIn())
         {
+            sendbutton.setEnabled(false);
+        }
+        else{
             Intent intent=new Intent(ContactUs.this,sign_in.class);
             startActivity(intent);
-        }*/
-
+        }
 
         sendbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +95,7 @@ public class ContactUs extends FragmentActivity {
                 }
             }
         });
-        getActionBar();
+       getSupportActionBar();
     }
 
 

@@ -1,4 +1,4 @@
-package com.example.eku.dry_ticket_project;
+package com.example.eku.dry_ticket_project.utils;
 
 /**
  * Created by DELL on 21-03-2015.
@@ -22,6 +22,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.ImageView;
+
+import com.example.eku.dry_ticket_project.R;
 
 public class ImageLoader {
 
