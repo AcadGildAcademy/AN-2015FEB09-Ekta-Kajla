@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -26,7 +27,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class sign_up extends Activity {
+public class sign_up extends ActionBarActivity {
     private ProgressDialog pDialog;
     EditText name, password,email;
     Button sign_up, cancel;
@@ -57,7 +58,7 @@ public class sign_up extends Activity {
                 Intent intent= new Intent(sign_up.this,first_activity.class);
                 startActivity(intent);
 
-
+getSupportActionBar();
             }
         });
         sign_up = (Button) findViewById(R.id.signup);

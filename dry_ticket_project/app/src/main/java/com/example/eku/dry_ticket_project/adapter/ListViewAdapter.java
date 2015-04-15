@@ -57,7 +57,7 @@ public class ListViewAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
 
         ImageView image_path = null;
-        TextView title;
+       // TextView title;
 
         inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -66,10 +66,10 @@ public class ListViewAdapter extends BaseAdapter {
         // Get the position
         resultp = data.get(position);
 
-        title = (TextView) itemView.findViewById(R.id.detail);
+        //title = (TextView) itemView.findViewById(R.id.detail);
 
-        title.setText(resultp.get(NowOnSale.TITLE));
-        Log.d("2222",title.getText().toString());
+       // title.setText(resultp.get(NowOnSale.TITLE));
+       // Log.d("2222",title.getText().toString());
         // Capture position and set results to the ImageView
         // Passes image_path images URL into ImageLoader.class
         image_path = (ImageView) itemView.findViewById(R.id.flag);

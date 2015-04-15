@@ -7,7 +7,7 @@
         android:id="@+id/flag_venue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
         android:padding="10dp" />
 
     <TextView
@@ -15,9 +15,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25sp"
-        android:text="Venue description"
+        android:text="Venue description:"
         android:layout_toRightOf="@+id/flag_venue"
-        android:textColor="@color/red"
+        android:textColor="@color/reddish"
         />
     <TextView
         android:id="@+id/data_desc"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:textColor="@color/red"
+        android:textColor="@color/black"
         android:layout_toRightOf="@+id/venue_description"
         />
     <TextView
@@ -33,8 +33,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25sp"
-        android:text="Venue Name"
-        android:textColor="@color/red"
+        android:text="Venue Name:"
+        android:textColor="@color/reddish"
         android:layout_below="@+id/venue_description"
         android:layout_toRightOf="@+id/flag_venue"/>
 
@@ -43,9 +43,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25sp"
-        android:textColor="@color/red"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:layout_below="@+id/data_desc"
         android:layout_toRightOf="@+id/venue_name" />
-    />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/location"
+        android:text="Venue Location"
+        android:textColor="@color/reddish"
+        />
 </LinearLayout>

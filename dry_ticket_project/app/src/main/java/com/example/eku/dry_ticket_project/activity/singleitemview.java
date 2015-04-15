@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,10 +16,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.eku.dry_ticket_project.pref.UserSession;
 import com.example.eku.dry_ticket_project.utils.ImageLoader;
 import com.example.eku.dry_ticket_project.R;
 
-public class singleitemview extends FragmentActivity {
+import java.util.HashMap;
+
+public class singleitemview extends ActionBarActivity {
     // Declare Variables
     String id;
     String desc;
@@ -30,6 +34,7 @@ public class singleitemview extends FragmentActivity {
     String position;
     Button buy_button;
     ImageLoader imageLoader = new ImageLoader(this);
+    UserSession session;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,7 +42,7 @@ public class singleitemview extends FragmentActivity {
         // Get the view from singleitemview.xml
         setContentView(R.layout.singleitemview);
 
-      //  Intent i = getIntent();
+        //  Intent i = getIntent();
         // Get the result of rank
         id = getIntent().getExtras().getString("id");
         desc = getIntent().getExtras().getString("desc");
@@ -71,18 +76,25 @@ public class singleitemview extends FragmentActivity {
 
         imageLoader.DisplayImage(image_path, imgflag);
         final Context context = this;
-        buy_button=(Button)findViewById(R.id.buy_ticket);
+        buy_button = (Button) findViewById(R.id.buy_ticket);
         buy_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context,Ticket_Booking.class);
-                Bundle bundle=new Bundle();
-                bundle.putString("id",id);
-                startActivity(intent);
+                session = new UserSession(getApplicationContext());
+                HashMap<String, String> user = session.getUserDetails();
+                if (session.isUserLoggedIn()) {
+                    String user_entered = user.get(UserSession.KEY_EMAIL);
+
+                    Intent intent = new Intent(context, Ticket_Booking.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("id", id);
+                    startActivity(intent);
+                }
             }
         });
-        getActionBar();
+        getSupportActionBar();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater m = getMenuInflater();
@@ -103,28 +115,33 @@ public class singleitemview extends FragmentActivity {
             // cd.show(fm, "Dialog");
 
             return true;
-        } else if (id == R.id.option_menu1) {
+        } else if (id == R.id.now_on_sale) {
             Intent intent = new Intent(singleitemview.this, NowOnSale.class);
             startActivity(intent);
 
-        } else if (id == R.id.option_menu2) {
+        } else if (id == R.id.upcoming) {
             Intent intent = new Intent(singleitemview.this, UpcomingEvents.class);
             startActivity(intent);
 
-        } else if (id == R.id.option_menu3) {
+        } else if (id == R.id.past) {
             Intent intent = new Intent(singleitemview.this, PastEvents.class);
             startActivity(intent);
 
-        } else if (id == R.id.option_menu4) {
-            Intent intent = new Intent(singleitemview.this, PastEvents.class);
+        } else if (id == R.id.booking) {
+            Intent intent = new Intent(singleitemview.this, Seat_allocation.class);
             startActivity(intent);
 
-        } else if (id == R.id.option_menu5) {
-            Intent intent = new Intent(singleitemview.this, PastEvents.class);
+        } else if (id == R.id.artists) {
+            Intent intent = new Intent(singleitemview.this, Artist_information.class);
             startActivity(intent);
 
-        } else if (id == R.id.option_menu6) {
+        } else if (id == R.id.venue) {
             Intent intent = new Intent(singleitemview.this, Venue
+                    .class);
+            startActivity(intent);
+
+        } else if (id == R.id.contact_us) {
+            Intent intent = new Intent(singleitemview.this, ContactUs
                     .class);
             startActivity(intent);
 

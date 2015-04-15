@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -34,7 +35,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ContactUs extends FragmentActivity {
+public class ContactUs extends ActionBarActivity {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     EditText fullname,fullphone,fullemail,fullmessage;
@@ -57,15 +58,17 @@ public class ContactUs extends FragmentActivity {
         fullemail=(EditText)findViewById(R.id.contactus3);
         fullmessage=(EditText)findViewById(R.id.contactus4);
         sendbutton=(Button)findViewById(R.id.send);
-/*       if (!session.isUserLoggedIn())
-       {
-           sendbutton.setEnabled(false);
+
+    /*    if (session.isUserLoggedIn()) {
+            sendbutton.setEnabled(true);
         }
-        else{
+        else {
             Intent intent=new Intent(ContactUs.this,sign_in.class);
             startActivity(intent);
-       }
+        }
 */
+
+
         sendbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,8 +96,8 @@ public class ContactUs extends FragmentActivity {
                    new GetContacts().execute();
                 }
             }
-        });
-        getActionBar();
+        });getSupportActionBar();
+        //getActionBar();
     }
 
 
@@ -146,6 +149,7 @@ public class ContactUs extends FragmentActivity {
         mMap.moveCamera(center);
         mMap.animateCamera(zoom);
     }
+
 
     private class GetContacts extends AsyncTask<Void,Integer,Void> {
         @Override
@@ -200,14 +204,18 @@ public class ContactUs extends FragmentActivity {
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
             int success=values[0];
-
+        /*    String name_value=fullname.getText().toString();
+            String phone_value=fullphone.getText().toString();
+            String email_value=fullemail.getText().toString();
+            String msg_value=fullmessage.getText().toString();
+*/
 
             if (success==1)
             {
                 Log.d("Enquiry saved","Enquiry Saved");
                 Toast.makeText(getApplicationContext(),"Enquiry Saved",Toast.LENGTH_LONG).show();
-
-
+               // session.createUserLoginSession(name_value,email_value);
+               // finish();
             }
             else
             {
@@ -225,7 +233,7 @@ public class ContactUs extends FragmentActivity {
         return matcher.matches();
     }
 
-    // validating password with retype password
+    // validating phone no
     private boolean isValidPhone(String phone) {
         if (phone != null && phone.length() >=10) {
             return true;
@@ -250,37 +258,35 @@ public class ContactUs extends FragmentActivity {
         } else if (id == R.id.add_menu) {
             Intent intent = new Intent(ContactUs.this, sign_up.class);
             startActivity(intent);
-            // CustomDialog cd = new CustomDialog();
-            // cd.show(fm, "Dialog");
 
             return true;
-        } else if (id == R.id.option_menu1) {
+        } else if (id == R.id.now_on_sale) {
             Intent intent = new Intent(ContactUs.this, NowOnSale.class);
             startActivity(intent);
 
-        } else if (id == R.id.option_menu2) {
+        } else if (id == R.id.upcoming) {
             Intent intent = new Intent(ContactUs.this, UpcomingEvents.class);
             intent.putExtra("url_string","http://bishasha.com/json/upcoming_events.php");
             startActivity(intent);
 
-        } else if (id == R.id.option_menu3) {
+        } else if (id == R.id.past) {
             Intent intent = new Intent(ContactUs.this, PastEvents.class);
             intent.putExtra("url_string", "http://bishasha.com/json/past_events.php");
             startActivity(intent);
 
-        } else if (id == R.id.option_menu4) {
-            Intent intent = new Intent(ContactUs.this, PastEvents.class);
+        } else if (id == R.id.booking) {
+            Intent intent = new Intent(ContactUs.this, Seat_allocation.class);
             startActivity(intent);
 
-        } else if (id == R.id.option_menu5) {
-            Intent intent = new Intent(ContactUs.this, PastEvents.class);
+        } else if (id == R.id.artists) {
+            Intent intent = new Intent(ContactUs.this, Artist_information.class);
             startActivity(intent);
 
-        } else if (id == R.id.option_menu6) {
+        } else if (id == R.id.venue) {
             Intent intent = new Intent(ContactUs.this, Venue.class);
             startActivity(intent);
 
-        }else if (id == R.id.option_menu7) {
+        }else if (id == R.id.contact_us) {
             Intent intent = new Intent(ContactUs.this, ContactUs.class);
             startActivity(intent);
 

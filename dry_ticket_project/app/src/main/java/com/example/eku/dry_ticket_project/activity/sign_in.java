@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -33,7 +34,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class sign_in extends FragmentActivity {
+public class sign_in extends ActionBarActivity {
     private ProgressDialog pDialog;
     EditText name, password;
     Button sign_in, logout;
@@ -65,7 +66,7 @@ public class sign_in extends FragmentActivity {
        session = new UserSession(getApplicationContext());
 
         loadMySavePreferences();
-        getActionBar();
+       getSupportActionBar();
 
         if(session.isUserLoggedIn())
         {
@@ -107,6 +108,21 @@ public class sign_in extends FragmentActivity {
                         savedMySharedPreferences("user", st);
                         savedMySharedPreferences("password",st2);
                     }
+                    else if (!checkBox.isChecked())
+                    {
+                        savedMySharedPreferences("user","");
+                        savedMySharedPreferences("password","");
+
+                    }
+
+                    Intent i = new Intent(getApplicationContext(), first_activity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                    // Add new Flag to start new Activity
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(i);
+
+                    finish();
 
                 }
 
@@ -116,10 +132,7 @@ public class sign_in extends FragmentActivity {
             @Override
             public void onClick(View v) {
                 session.logoutUser();
-                Intent myIntent = new Intent(sign_in.this, first_activity.class);
-                myIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);// clear back stack
-                startActivity(myIntent);
-                finish();
+
 
             }
         });
@@ -187,10 +200,12 @@ public class sign_in extends FragmentActivity {
                {
                    Log.d("Login Successful","Login Success");
                    Toast.makeText(getApplicationContext(),"login success",Toast.LENGTH_LONG).show();
+                   session.createUserLoginSession(username_value,userpass_value);
                    Intent intent=new Intent (sign_in.this,first_activity.class);
-                                 startActivity (intent);
-                     session.createUserLoginSession(username_value,userpass_value);
+
+
                    finish();
+                   startActivity (intent);
 
                }
                else
@@ -261,35 +276,41 @@ public class sign_in extends FragmentActivity {
         } else if (id == R.id.add_menu) {
             Intent intent = new Intent(sign_in.this, sign_up.class);
             startActivity(intent);
-            // CustomDialog cd = new CustomDialog();
-            // cd.show(fm, "Dialog");
 
             return true;
-        } else if (id == R.id.option_menu1) {
+        } else if (id == R.id.now_on_sale) {
             Intent intent = new Intent(sign_in.this, NowOnSale.class);
             startActivity(intent);
 
-        } else if (id == R.id.option_menu2) {
+        } else if (id == R.id.upcoming) {
             Intent intent = new Intent(sign_in.this, UpcomingEvents.class);
+            intent.putExtra("url_string","http://bishasha.com/json/upcoming_events.php");
             startActivity(intent);
 
-        } else if (id == R.id.option_menu3) {
+        } else if (id == R.id.past) {
             Intent intent = new Intent(sign_in.this, PastEvents.class);
+            intent.putExtra("url_string", "http://bishasha.com/json/past_events.php");
             startActivity(intent);
 
-        } else if (id == R.id.option_menu4) {
-            Intent intent = new Intent(sign_in.this, PastEvents.class);
+        } else if (id == R.id.booking) {
+            Intent intent = new Intent(sign_in.this, Seat_allocation.class);
             startActivity(intent);
 
-        } else if (id == R.id.option_menu5) {
-            Intent intent = new Intent(sign_in.this, PastEvents.class);
+        } else if (id == R.id.artists) {
+            Intent intent = new Intent(sign_in.this, Artist_information.class);
             startActivity(intent);
 
-        } else if (id == R.id.option_menu6) {
+        } else if (id == R.id.venue) {
             Intent intent = new Intent(sign_in.this, Venue.class);
             startActivity(intent);
 
+        }else if (id == R.id.contact_us) {
+            Intent intent = new Intent(sign_in.this, ContactUs.class);
+            startActivity(intent);
+
+
         }
+
         return super.onOptionsItemSelected(item);
     }
 

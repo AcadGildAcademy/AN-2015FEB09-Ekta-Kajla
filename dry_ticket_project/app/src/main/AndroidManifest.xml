@@ -15,10 +15,11 @@
 
     <application
         android:allowBackup="true"
-
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity android:name=".activity.first_activity" android:icon="@drawable/drylogo" >
+        <activity
+            android:name=".activity.first_activity"
+            android:icon="@drawable/drylogo" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,16 +53,13 @@
  >
         <activity
             android:name=".activity.singleitemview"
-            android:icon="@drawable/d_logo"
-             />
+            android:icon="@drawable/d_logo" />
         <activity
-        android:name=".activity.single_venue"
-        android:icon="@drawable/d_logo"
-        />
+            android:name=".activity.single_venue"
+            android:icon="@drawable/d_logo" />
         <activity
             android:name=".activity.Ticket_Booking"
-            android:icon="@drawable/d_logo"/>
-
+            android:icon="@drawable/d_logo" />
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -72,9 +70,17 @@
 
         <activity
             android:name=".activity.ContactUs"
-            android:label="@string/title_activity_maps"
-            android:icon="@drawable/d_logo">
+            android:icon="@drawable/d_logo"
+            android:label="@string/title_activity_maps" >
         </activity>
+        <activity
+            android:name=".activity.venue_map"
+            android:label="@string/title_activity_venue_map" >
+        </activity>
+        <activity android:name=".activity.Artist_information" android:label="Artists"/>
+        <activity android:name=".activity.Artist_detail_information"/>
+        <activity android:name=".activity.Seat_allocation"></activity>
+
     </application>
 
 </manifest>

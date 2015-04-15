@@ -1,11 +1,18 @@
 <LinearLayout
     android:layout_height="wrap_content"
     android:layout_width="wrap_content"
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
 <RelativeLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
+
  <fragment
 
     android:layout_width="150dp"
@@ -83,4 +90,5 @@
 
         android:background="@color/reddish"/>
 </RelativeLayout>
+    </ScrollView>
 </LinearLayout>

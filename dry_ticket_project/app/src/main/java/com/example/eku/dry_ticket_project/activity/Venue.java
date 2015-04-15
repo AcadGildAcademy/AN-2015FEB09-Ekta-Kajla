@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,7 +25,7 @@ import com.example.eku.dry_ticket_project.utils.JSONfunctions;
 import com.example.eku.dry_ticket_project.adapter.ListViewAdapter_venue;
 import com.example.eku.dry_ticket_project.R;
 
-public class Venue extends FragmentActivity {
+public class Venue extends ActionBarActivity {
     // Declare Variables
     JSONObject jsonobject;
     JSONArray jsonarray;
@@ -45,7 +46,7 @@ public class Venue extends FragmentActivity {
         setContentView(R.layout.listview_main);
         // Execute DownloadJSON AsyncTask
         new DownloadJSON().execute();
-        getActionBar();
+       getSupportActionBar();
     }
 
     // DownloadJSON AsyncTask
@@ -125,34 +126,40 @@ public class Venue extends FragmentActivity {
             startActivity(intent);
 
             return true;
-        } else if (id == R.id.option_menu1) {
+        } else if (id == R.id.now_on_sale) {
             Intent intent = new Intent(Venue.this, NowOnSale.class);
             startActivity(intent);
 
-        } else if (id == R.id.option_menu2) {
+        } else if (id == R.id.upcoming) {
             Intent intent = new Intent(Venue.this, UpcomingEvents.class);
             intent.putExtra("url_string", "http://bishasha.com/json/upcoming_events.php");
             startActivity(intent);
 
-        } else if (id == R.id.option_menu3) {
+        } else if (id == R.id.past) {
             Intent intent = new Intent(Venue.this, PastEvents.class);
             intent.putExtra("url_string", "http://bishasha.com/json/past_events.php");
             startActivity(intent);
 
-        } else if (id == R.id.option_menu4) {
-            Intent intent = new Intent(Venue.this, PastEvents.class);
+        } else if (id == R.id.booking) {
+            Intent intent = new Intent(Venue.this,Seat_allocation.class);
             startActivity(intent);
 
-        } else if (id == R.id.option_menu5) {
-            Intent intent = new Intent(Venue.this, PastEvents.class);
+        } else if (id == R.id.artists) {
+            Intent intent = new Intent(Venue.this, Artist_information.class);
             startActivity(intent);
 
-        } else if (id == R.id.option_menu6) {
+        } else if (id == R.id.venue) {
             Intent intent = new Intent(Venue.this, Venue.class);
             startActivity(intent);
+
+        } else if (id == R.id.contact_us) {
+            Intent intent = new Intent(Venue.this, ContactUs.class);
+            startActivity(intent);
+
 
         }
         return super.onOptionsItemSelected(item);
     }
 }
+
 

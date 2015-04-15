@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_below="@+id/flag2"
         android:layout_toRightOf="@+id/datee"
         />
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_below="@+id/date2"
         android:layout_toRightOf="@+id/description"
         />
@@ -54,7 +54,7 @@
        android:layout_centerHorizontal="true"
         android:fadingEdge="vertical"
         android:padding="15dp"
-        android:backgroundTint="@color/red"
+        android:backgroundTint="@color/brown"
 
         />
 

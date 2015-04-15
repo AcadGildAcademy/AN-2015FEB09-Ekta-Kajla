@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,6 +19,7 @@ import com.example.eku.dry_ticket_project.adapter.U_ListViewAdapter;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.xml.sax.SAXException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +27,7 @@ import java.util.HashMap;
 /**
  * Created by DELL on 28-03-2015.
  */
-public class UpcomingEvents extends FragmentActivity
+public class UpcomingEvents extends ActionBarActivity
 {
    // Declare Variables
     JSONObject jsonobject;
@@ -50,7 +52,7 @@ String url_string1;
        Intent i=getIntent();
         url_string1=i.getStringExtra("url_string");
         new DownloadJSON().execute();
-        getActionBar();
+        getSupportActionBar();
     }
 
     // DownloadJSON AsyncTask
@@ -134,33 +136,33 @@ String url_string1;
             // cd.show(fm, "Dialog");
 
             return true;
-        } else if (id == R.id.option_menu1) {
+        } else if (id == R.id.now_on_sale) {
             Intent intent = new Intent(UpcomingEvents.this, NowOnSale.class);
             startActivity(intent);
 
-        } else if (id == R.id.option_menu2) {
+        } else if (id == R.id.upcoming) {
             Intent intent = new Intent(UpcomingEvents.this, UpcomingEvents.class);
             intent.putExtra("url_string","http://bishasha.com/json/upcoming_events.php");
             startActivity(intent);
 
-        } else if (id == R.id.option_menu3) {
+        } else if (id == R.id.past) {
             Intent intent = new Intent(UpcomingEvents.this, PastEvents.class);
             intent.putExtra("url_string", "http://bishasha.com/json/past_events.php");
             startActivity(intent);
 
-        } else if (id == R.id.option_menu4) {
-            Intent intent = new Intent(UpcomingEvents.this, PastEvents.class);
+        } else if (id == R.id.booking) {
+            Intent intent = new Intent(UpcomingEvents.this,Seat_allocation.class);
             startActivity(intent);
 
-        } else if (id == R.id.option_menu5) {
-            Intent intent = new Intent(UpcomingEvents.this, PastEvents.class);
+        } else if (id == R.id.artists) {
+            Intent intent = new Intent(UpcomingEvents.this, Artist_information.class);
             startActivity(intent);
 
-        } else if (id == R.id.option_menu6) {
+        } else if (id == R.id.venue) {
             Intent intent = new Intent(UpcomingEvents.this, Venue.class);
             startActivity(intent);
 
-        }else if (id == R.id.option_menu7) {
+        }else if (id == R.id.contact_us) {
             Intent intent = new Intent(UpcomingEvents.this, ContactUs.class);
             startActivity(intent);
 

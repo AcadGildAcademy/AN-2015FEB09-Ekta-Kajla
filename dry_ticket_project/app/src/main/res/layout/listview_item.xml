@@ -19,8 +19,8 @@ android:paddingTop="5dp"
         android:layout_height="wrap_content"
         android:textSize="30dp"
         android:textStyle="italic"
-        android:textColor="@color/red"
-
+        android:textColor="@color/reddish"
+android:text="Click For Detail"
         android:layout_below="@+id/flag"
 
 

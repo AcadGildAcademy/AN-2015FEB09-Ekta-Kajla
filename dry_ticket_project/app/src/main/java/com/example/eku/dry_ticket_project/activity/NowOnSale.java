@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,8 +24,9 @@ import android.widget.ListView;
 import com.example.eku.dry_ticket_project.utils.JSONfunctions;
 import com.example.eku.dry_ticket_project.adapter.ListViewAdapter;
 import com.example.eku.dry_ticket_project.R;
+import com.example.eku.dry_ticket_project.utils.ServiceHandler;
 
-public class NowOnSale extends FragmentActivity {
+public class NowOnSale extends ActionBarActivity {
     // Declare Variables
     JSONObject jsonobject;
     JSONArray jsonarray;
@@ -40,7 +42,7 @@ public class NowOnSale extends FragmentActivity {
     public static String VENUE = "venue";
     public static String IMAGE_PATH = "image_path";
     public static String TITLE = "title";
-    public String url_string;
+    public String url_string="http://bishasha.com/json/now_on_sale_events.php";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,7 @@ public class NowOnSale extends FragmentActivity {
         // Intent i=getIntent();
         // url_string=i.getStringExtra("url");
         new DownloadJSON().execute();
-        getActionBar();
+       getSupportActionBar();
     }
 
     // DownloadJSON AsyncTask
@@ -75,12 +77,14 @@ public class NowOnSale extends FragmentActivity {
         protected Void doInBackground(Void... params) {
             // Create an array
             arraylist = new ArrayList<HashMap<String, String>>();
-            //   ServiceHandler sh=new ServiceHandler();
+            ServiceHandler serviceHandler=new ServiceHandler();
+          String jsonString =  serviceHandler.makeServiceCall(url_string,1);
+
             // Retrieve JSON Objects from the given URL address
-            jsonobject = JSONfunctions
-                    .getJSONfromURL("http://bishasha.com/json/now_on_sale_events.php");
+           //JSONfunctions.getJSONfromURL("http://bishasha.com/json/now_on_sale_events.php");
             Log.d("object-->", "" + jsonobject);
             try {
+                jsonobject = new JSONObject(jsonString) ;
                 // Locate the array name in JSON
                 jsonarray = jsonobject.getJSONArray("events");
                 Log.d("array-->", "" + jsonarray);
@@ -140,33 +144,33 @@ public class NowOnSale extends FragmentActivity {
             startActivity(intent);
 
             return true;
-        } else if (id == R.id.option_menu1) {
+        } else if (id == R.id.now_on_sale) {
             Intent intent = new Intent(NowOnSale.this, NowOnSale.class);
             startActivity(intent);
 
-        } else if (id == R.id.option_menu2) {
+        } else if (id == R.id.upcoming) {
             Intent intent = new Intent(NowOnSale.this, UpcomingEvents.class);
             intent.putExtra("url_string", "http://bishasha.com/json/upcoming_events.php");
             startActivity(intent);
 
-        } else if (id == R.id.option_menu3) {
+        } else if (id == R.id.past) {
             Intent intent = new Intent(NowOnSale.this, PastEvents.class);
             intent.putExtra("url_string", "http://bishasha.com/json/past_events.php");
             startActivity(intent);
 
-        } else if (id == R.id.option_menu4) {
-            Intent intent = new Intent(NowOnSale.this, PastEvents.class);
+        } else if (id == R.id.booking) {
+            Intent intent = new Intent(NowOnSale.this, Seat_allocation.class);
             startActivity(intent);
 
-        } else if (id == R.id.option_menu5) {
-            Intent intent = new Intent(NowOnSale.this, PastEvents.class);
+        } else if (id == R.id.artists) {
+            Intent intent = new Intent(NowOnSale.this,Artist_information.class);
             startActivity(intent);
 
-        } else if (id == R.id.option_menu6) {
+        } else if (id == R.id.venue) {
             Intent intent = new Intent(NowOnSale.this, Venue.class);
             startActivity(intent);
 
-        } else if (id == R.id.option_menu7) {
+        } else if (id == R.id.contact_us) {
             Intent intent = new Intent(NowOnSale.this, ContactUs.class);
             startActivity(intent);
 
