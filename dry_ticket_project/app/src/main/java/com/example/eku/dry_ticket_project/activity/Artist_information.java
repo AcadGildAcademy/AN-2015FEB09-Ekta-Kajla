@@ -39,6 +39,8 @@ public class Artist_information extends ActionBarActivity
     public static String ARTIST_NAME = "artist_name";
     public static String ARTIST_DESCRIPTION = "artist_description";
     public static String ARTIST_PHOTO_PATH = "artist_photo_path";
+   public static String ARTIST_SONGS="artist_songs";
+public static String SONG_NAME="song_name";
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -83,7 +85,9 @@ public class Artist_information extends ActionBarActivity
                     map.put("artist_name", jsonobject.getString("artist_name"));
                     map.put("artist_description", jsonobject.getString("artist_description"));
                     map.put("artist_photo_path",jsonobject.getString("artist_photo_path"));
-                    //map.put("event_name", jsonobject.getString("event_name"));
+                    map.put("artist_songs", jsonobject.getString("artist_songs"));
+                    Log.d("aa",jsonobject.getString("artist_songs"));
+                    map.put("song_name", jsonobject.getString("song_name"));
                     arraylist.add(map);
                 }
             }

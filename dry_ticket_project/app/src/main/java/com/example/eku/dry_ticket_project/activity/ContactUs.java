@@ -59,14 +59,18 @@ public class ContactUs extends ActionBarActivity {
         fullmessage=(EditText)findViewById(R.id.contactus4);
         sendbutton=(Button)findViewById(R.id.send);
 
-    /*    if (session.isUserLoggedIn()) {
-            sendbutton.setEnabled(true);
-        }
-        else {
-            Intent intent=new Intent(ContactUs.this,sign_in.class);
+        session = new UserSession(getApplicationContext());
+        HashMap<String, String> user = session.getUserDetails();
+        if (! session.isUserLoggedIn()) {
+            String user_entered = user.get(UserSession.KEY_EMAIL);
+            Intent intent = new Intent(ContactUs.this, sign_in.class);
+          //  Bundle bundle = new Bundle();
+          //  bundle.putString("id", id);
             startActivity(intent);
+
+
         }
-*/
+
 
 
         sendbutton.setOnClickListener(new View.OnClickListener() {

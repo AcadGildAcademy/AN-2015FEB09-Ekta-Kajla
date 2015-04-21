@@ -3,6 +3,7 @@ package com.example.eku.dry_ticket_project.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,6 +76,8 @@ public class ListViewAdapter_artists extends BaseAdapter
                 bundle.putString("artist_name", resultp.get(Artist_information.ARTIST_NAME ));
                 bundle.putString("artist_photo_path", resultp.get(Artist_information.ARTIST_PHOTO_PATH ));
                 bundle.putString("artist_description", resultp.get(Artist_information.ARTIST_DESCRIPTION ));
+                bundle.putString("artist_songs", resultp.get(Artist_information.ARTIST_SONGS ));
+                bundle.putString("song_name", resultp.get(Artist_information.SONG_NAME));
                 Intent intent = new Intent(context, Artist_detail_information.class);
                 intent.putExtras(bundle);
                 context.startActivity(intent);

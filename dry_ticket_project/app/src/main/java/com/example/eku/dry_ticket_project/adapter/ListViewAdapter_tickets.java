@@ -52,16 +52,26 @@ public class ListViewAdapter_tickets extends BaseAdapter {
     {
         TextView type_category;
         TextView price;
-        Button button;
+        Button buy_ticket_btn;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View itemView = inflater.inflate(R.layout.ticket_selection, parent, false);
         resultp = data.get(position);
         type_category = (TextView) itemView.findViewById(R.id.type_category);
         price = (TextView) itemView.findViewById(R.id.price);
-        //button = (Button) itemView.findViewById(R.id.buy_button);
+        buy_ticket_btn = (Button) itemView.findViewById(R.id.buy_ticket);
         type_category.setText(resultp.get(Ticket_Booking.TYPE_CATEGORY));
         price.setText(resultp.get(Ticket_Booking.PRICE));
-        itemView.setOnClickListener(new View.OnClickListener()
+        buy_ticket_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent intent = new Intent(context, Seat_allocation.class);
+
+                context.startActivity(intent);
+            }
+        });
+      /*  itemView.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View arg0)
@@ -72,15 +82,12 @@ public class ListViewAdapter_tickets extends BaseAdapter {
                 //Bundle bundle = intent.getExtras();
                 bundle.putString("type_category", resultp.get(Ticket_Booking.TYPE_CATEGORY ));
                 bundle.putString("price", resultp.get(Ticket_Booking.PRICE));
-                //bundle.putString("event_id", resultp.get(Now_on_sale_firstpage.DATE));
-                //bundle.putString("time", resultp.get(Now_on_sale_firstpage.TIME));
-                //bundle.putString("venue", resultp.get(Now_on_sale_firstpage.VENUE));
-                // Start SingleItemView Class
+
                 Intent intent = new Intent(context, Seat_allocation.class);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }
         });
-        return itemView;
+       */ return itemView;
     }
 }

@@ -80,6 +80,8 @@
         <activity android:name=".activity.Artist_information" android:label="Artists"/>
         <activity android:name=".activity.Artist_detail_information"/>
         <activity android:name=".activity.Seat_allocation"></activity>
+        <activity android:name=".activity.Order"></activity>
+
 
     </application>
 

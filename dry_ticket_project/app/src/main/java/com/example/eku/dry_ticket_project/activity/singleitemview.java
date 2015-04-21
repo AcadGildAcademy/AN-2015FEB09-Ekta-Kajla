@@ -84,8 +84,16 @@ public class singleitemview extends ActionBarActivity {
                 HashMap<String, String> user = session.getUserDetails();
                 if (session.isUserLoggedIn()) {
                     String user_entered = user.get(UserSession.KEY_EMAIL);
-
                     Intent intent = new Intent(context, Ticket_Booking.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("id", id);
+                    startActivity(intent);
+
+
+                }
+                else
+                {
+                    Intent intent = new Intent(context, sign_in.class);
                     Bundle bundle = new Bundle();
                     bundle.putString("id", id);
                     startActivity(intent);

@@ -1,7 +1,9 @@
 package com.example.eku.dry_ticket_project.activity;
 
+/**
+ * Created by DELL on 20-04-2015.
+ */
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -30,7 +32,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Seat_allocation extends ActionBarActivity {
+public class Seat_allocation_two extends ActionBarActivity {
 
     int[] m = new int[8];
     int [] post =new int [8];
@@ -42,9 +44,7 @@ public class Seat_allocation extends ActionBarActivity {
     private static final String TAG_S2 = "s2";
     private static final String TAG_S3 = "s3";
     private static final String TAG_S4 = "s4";
-    private static final String TAG_S5 = "s5";
-    private static final String TAG_S6 = "s6";
-    private static final String TAG_S7 = "s7";
+
     private static final String TAG_ID = "id";
     UserSession session;
     private boolean flag1=false, flag2=false, flag3=false, flag4=false, flag5=false, flag6=false, flag7=false;
@@ -54,17 +54,16 @@ public class Seat_allocation extends ActionBarActivity {
     ViewGroup parent;
     private static String url = "http://bishasha.com/json/get_sitting_plan.php";
     private static String url_post= "http://bishasha.com/json/post_sitting_plan.php";
-    String s1,s2,s3,s4,s0,s5,s6,s7,sid;
+    String s1,s2,s3,s4,s0,sid;
     String str_id;
-    Button book_b,check;
-    TextView display0,display1,display2,display3,display4,display5,display6,display7;
+    Button book_b;
+    TextView display0,display1,display2,display3,display4;
     String pos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.seat_selection);
         book_b=(Button)findViewById(R.id.book_btn);
-        check=(Button)findViewById(R.id.hello);
 
         Log.d("enter","");
 
@@ -74,9 +73,7 @@ public class Seat_allocation extends ActionBarActivity {
         display2=(TextView) findViewById(R.id.display_booking2);
         display3=(TextView) findViewById(R.id.display_booking3);
         display4=(TextView) findViewById(R.id.display_booking4);
-        display5=(TextView) findViewById(R.id.display_booking5);
-        display6=(TextView) findViewById(R.id.display_booking6);
-        display7=(TextView) findViewById(R.id.display_booking7);
+
         gridview = (GridView) findViewById(R.id.gridview);
         // gridview.setAdapter(new ImageAdapter(this));
 
@@ -88,7 +85,7 @@ public class Seat_allocation extends ActionBarActivity {
 
 
                 int arrLabel = m[position];
-                 pos=Integer.toString(position);
+                pos=Integer.toString(position);
                 Toast.makeText(
                         getApplicationContext(),
                         "v" + arrLabel+"p"+position, Toast.LENGTH_SHORT).show();
@@ -214,78 +211,7 @@ public class Seat_allocation extends ActionBarActivity {
                             }
                         }
                         break;
-                    case 5:
-                        if (arrLabel == 1) {
 
-                            Toast.makeText(getApplicationContext(), "already book", Toast.LENGTH_SHORT).show();
-                        } else {
-                            if (flag4== false) {
-                                count = count + 1;
-                                Log.d("count++>",""+count );
-                                ImageView imageView = (ImageView) v.findViewById(R.id.grid_item_image);
-                                imageView.setImageResource(R.drawable.blue_seat);
-                                post[4]=1;
-                                flag4 = true;
-                                display4.setText(pos);
-                            } else {
-                                count = count - 1;
-                                Log.d("count-->",""+count );
-                                ImageView imageView = (ImageView) v.findViewById(R.id.grid_item_image);
-                                imageView.setImageResource(R.drawable.grey_seat);
-                                post[4]=0;
-                                flag4 = false;
-                                display4.setText("");
-                            }
-                        }
-                        break;
-                    case 6:
-                        if (arrLabel == 1) {
-
-                            Toast.makeText(getApplicationContext(), "already book", Toast.LENGTH_SHORT).show();
-                        } else {
-                            if (flag4== false) {
-                                count = count + 1;
-                                Log.d("count++>",""+count );
-                                ImageView imageView = (ImageView) v.findViewById(R.id.grid_item_image);
-                                imageView.setImageResource(R.drawable.blue_seat);
-                                post[4]=1;
-                                flag4 = true;
-                                display4.setText(pos);
-                            } else {
-                                count = count - 1;
-                                Log.d("count-->",""+count );
-                                ImageView imageView = (ImageView) v.findViewById(R.id.grid_item_image);
-                                imageView.setImageResource(R.drawable.grey_seat);
-                                post[4]=0;
-                                flag4 = false;
-                                display4.setText("");
-                            }
-                        }
-                        break;
-                    case 7:
-                        if (arrLabel == 1) {
-
-                            Toast.makeText(getApplicationContext(), "already book", Toast.LENGTH_SHORT).show();
-                        } else {
-                            if (flag4== false) {
-                                count = count + 1;
-                                Log.d("count++>",""+count );
-                                ImageView imageView = (ImageView) v.findViewById(R.id.grid_item_image);
-                                imageView.setImageResource(R.drawable.blue_seat);
-                                post[4]=1;
-                                flag4 = true;
-                                display4.setText(pos);
-                            } else {
-                                count = count - 1;
-                                Log.d("count-->",""+count );
-                                ImageView imageView = (ImageView) v.findViewById(R.id.grid_item_image);
-                                imageView.setImageResource(R.drawable.grey_seat);
-                                post[4]=0;
-                                flag4 = false;
-                                display4.setText("");
-                            }
-                        }
-                        break;
 
                 }
 
@@ -294,9 +220,6 @@ public class Seat_allocation extends ActionBarActivity {
                 Log.d("----->>post[2]=",""+post[2]);
                 Log.d("----->>post[3]=",""+post[3]);
                 Log.d("----->>post[4]=",""+post[4]);
-                Log.d("----->>post[5]=",""+post[5]);
-                Log.d("----->>post[6]=",""+post[6]);
-                Log.d("----->>post[7]=",""+post[7]);
             }
 
         });
@@ -306,23 +229,6 @@ public class Seat_allocation extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 new GetContacts().execute();
-            }
-
-        });
-        check.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(Seat_allocation.this,Order.class);
-                intent.putExtra("s0",post[0]);
-                intent.putExtra("s1",post[1]);
-                intent.putExtra("s2",post[2]);
-                intent.putExtra("s3",post[3]);
-                intent.putExtra("s4",post[4]);
-                intent.putExtra("s5",post[5]);
-                intent.putExtra("s6",post[6]);
-                intent.putExtra("s7",post[7]);
-                intent.putExtra("sid",sid);
-                startActivity(intent);
             }
         });
         getSupportActionBar();
@@ -343,7 +249,7 @@ public class Seat_allocation extends ActionBarActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress dialog
-            pDialog = new ProgressDialog(Seat_allocation.this);
+            pDialog = new ProgressDialog(Seat_allocation_two.this);
             pDialog.setMessage("Please wait...");
             //   pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
@@ -354,12 +260,11 @@ public class Seat_allocation extends ActionBarActivity {
         protected String doInBackground(String... params1) {
 
             List params=new ArrayList();
-            params.add(new BasicNameValuePair("id","2"));
+            params.add(new BasicNameValuePair("id","1"));
 
             ServiceHandler sh = new ServiceHandler();
             // Making a request to url and getting response
-            String jsonStr = sh.makeServiceCall(url, ServiceHandler.GET,params
-            );
+            String jsonStr = sh.makeServiceCall(url, ServiceHandler.GET);
 
             Log.d("Response: ", "> " + jsonStr);
 
@@ -382,9 +287,6 @@ public class Seat_allocation extends ActionBarActivity {
                         s2= c.getString(TAG_S2);
                         s3=c.getString(TAG_S3);
                         s4=c.getString(TAG_S4);
-                        s5=c.getString(TAG_S5);
-                        s6=c.getString(TAG_S6);
-                        s7=c.getString(TAG_S7);
                         sid=c.getString(TAG_ID);
 
                         post[0]=  m[0]=Integer.parseInt(s0);
@@ -397,12 +299,6 @@ public class Seat_allocation extends ActionBarActivity {
                         Log.d("m[3]=",""+m[3]);
                         post[4]=   m[4]=Integer.parseInt(s4);
                         Log.d("m[4]=",""+m[4]);
-                        post[5]=   m[5]=Integer.parseInt(s5);
-                        Log.d("m[5]=",""+m[5]);
-                        post[6]=   m[6]=Integer.parseInt(s6);
-                        Log.d("m[6]=",""+m[6]);
-                        post[7]=   m[7]=Integer.parseInt(s7);
-                        Log.d("m[7]=",""+m[7]);
                         str_id=sid;
 
                     }
@@ -426,7 +322,7 @@ public class Seat_allocation extends ActionBarActivity {
             // Dismiss the progress dialog
             //  int x= Integer.parseInt(s0);
 
-            gridview.setAdapter(new ImageAdapter(Seat_allocation.this, m));
+            gridview.setAdapter(new ImageAdapter(Seat_allocation_two.this, m));
 
             if (pDialog.isShowing())
                 pDialog.dismiss();
@@ -443,7 +339,7 @@ public class Seat_allocation extends ActionBarActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress dialog
-            pDialog = new ProgressDialog(Seat_allocation.this);
+            pDialog = new ProgressDialog(Seat_allocation_two.this);
             pDialog.setMessage("Please wait...");
             pDialog.setCancelable(false);
             pDialog.show();
@@ -456,9 +352,6 @@ public class Seat_allocation extends ActionBarActivity {
             Log.d("<<>>post[2]=",""+post[2]);
             Log.d("-<<>>post[3]=",""+post[3]);
             Log.d("<<>>post[4]=",""+post[4]);
-            Log.d("<<>>post[5]=",""+post[5]);
-            Log.d("<<>>post[6]=",""+post[6]);
-            Log.d("<<>>post[7]=",""+post[7]);
             Log.d("<<>>id=",""+str_id);
             try {
                 // Building Parameters-9+++++++++++++++++++++++++++++
@@ -471,10 +364,7 @@ public class Seat_allocation extends ActionBarActivity {
                 params.add(new BasicNameValuePair("s2",Integer.toString(post[2])));
                 params.add(new BasicNameValuePair("s3",Integer.toString(post[3])));
                 params.add(new BasicNameValuePair("s4",Integer.toString(post[4])));
-                params.add(new BasicNameValuePair("s5",Integer.toString(post[5])));
-                params.add(new BasicNameValuePair("s6",Integer.toString(post[6])));
-                params.add(new BasicNameValuePair("s7",Integer.toString(post[7])));
-
+          //  params.add(new BasicNameValuePair("id","2"));
 
                 ServiceHandler sh = new ServiceHandler();
                 Log.d("request!", "starting");
