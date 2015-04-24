@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.eku.dry_ticket_project.R;
+import com.example.eku.dry_ticket_project.pref.UserSession;
 import com.example.eku.dry_ticket_project.utils.ServiceHandler;
 
 import org.apache.http.message.BasicNameValuePair;
@@ -20,6 +21,7 @@ import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -30,24 +32,26 @@ public class Order extends ActionBarActivity {
 String sid,s0,s1,s2,s3,s4,s5,s6,s7;
     Button check;
     private static final String TAG_SUCCESS = "success";
-    int [] post =new int [8];
+    int [] post =new int [10];
     private ProgressDialog pDialog;
     private static String url_post= "http://bishasha.com/json/post_sitting_plan.php";
+    String event_id,   seat,tt;
+    String user_email;
+    UserSession session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_activity);
+        getSupportActionBar();
         email=(TextView)findViewById(R.id.order_email);
         total=(TextView)findViewById(R.id.order_total);
         selected_seat=(TextView)findViewById(R.id.order_selected_seat);
         check=(Button)findViewById(R.id.order_button);
 
-        email.setText("abc@gmail.com");
-        total.setText("4444");
-        selected_seat.setText("1 2 3 4");
+
         Log.d("aaa","email");
-        Intent intent= getIntent();
-  /*     s0=intent.getStringExtra("s0");
+      Intent intent= getIntent();
+       s0=intent.getStringExtra("s0");
         s1=intent.getStringExtra("s1");
         s2=intent.getStringExtra("s2");
         s3=intent.getStringExtra("s3");
@@ -55,8 +59,13 @@ String sid,s0,s1,s2,s3,s4,s5,s6,s7;
         s5=intent.getStringExtra("s5");
         s6=intent.getStringExtra("s6");
         s7=intent.getStringExtra("s7");
-        sid=intent.getStringExtra("sid");
+      sid=intent.getStringExtra("sid");
+        tt=intent.getStringExtra("total");
+         seat=intent.getStringExtra("seat_selected");
+        event_id=intent.getStringExtra("event_id");
+        Log.d("s0",""+s0);
         post[0]=Integer.parseInt(s0);
+        Log.d("p[0]",""+post[0]);
         post[1]=Integer.parseInt(s1);
         post[2]=Integer.parseInt(s2);
         post[3]=Integer.parseInt(s3);
@@ -64,7 +73,18 @@ String sid,s0,s1,s2,s3,s4,s5,s6,s7;
         post[5]=Integer.parseInt(s5);
         post[6]=Integer.parseInt(s6);
         post[7]=Integer.parseInt(s7);
-*/
+        session = new UserSession(getApplicationContext());
+        HashMap<String,String> user=session.getUserDetails();
+        if(session.isUserLoggedIn())
+        {
+             user_email=user.get(UserSession.KEY_NAME);
+            email.setText(user_email);
+        }
+        total.setText(tt);
+
+        selected_seat.setText(seat);
+
+        Log.d("s0", "" + s0);
         check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,15 +115,12 @@ String sid,s0,s1,s2,s3,s4,s5,s6,s7;
         @Override
         protected Void doInBackground(Void... arg0) {
             int success;
-            Log.d("<<<>>post[0]=", "" + post[0]);
-            Log.d("<<>>post[1]=",""+post[1]);
-            Log.d("<<>>post[2]=",""+post[2]);
-            Log.d("-<<>>post[3]=",""+post[3]);
-            Log.d("<<>>post[4]=",""+post[4]);
-            Log.d("<<>>post[5]=",""+post[5]);
-            Log.d("<<>>post[6]=",""+post[6]);
-            Log.d("<<>>post[7]=",""+post[7]);
-            Log.d("<<>>id=",""+sid);
+            Log.d("<<<>>eventid=", "" + event_id);
+            Log.d("<<>>total=",""+tt);
+            Log.d("<<>>seat",""+seat);
+            Log.d("<<>>email",user_email);
+String email=user_email.toString();
+
             try {
                 // Building Parameters-9+++++++++++++++++++++++++++++
 
@@ -118,7 +135,10 @@ String sid,s0,s1,s2,s3,s4,s5,s6,s7;
                 params.add(new BasicNameValuePair("s5",Integer.toString(post[5])));
                 params.add(new BasicNameValuePair("s6",Integer.toString(post[6])));
                 params.add(new BasicNameValuePair("s7",Integer.toString(post[7])));
-
+                params.add(new BasicNameValuePair("event_id",event_id));
+                params.add(new BasicNameValuePair("total",tt));
+                params.add(new BasicNameValuePair("email",email));
+                params.add(new BasicNameValuePair("selected_seats",seat));
 
                 ServiceHandler sh = new ServiceHandler();
                 Log.d("request!", "starting");

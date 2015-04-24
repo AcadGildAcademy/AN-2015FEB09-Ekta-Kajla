@@ -11,17 +11,21 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.eku.dry_ticket_project.utils.JSONfunctions;
 import com.example.eku.dry_ticket_project.adapter.ListViewAdapter_tickets;
 import com.example.eku.dry_ticket_project.R;
+import com.example.eku.dry_ticket_project.utils.ServiceHandler;
 
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by DELL on 10-04-2015.
@@ -34,15 +38,19 @@ public class Ticket_Booking extends ActionBarActivity {
     ListViewAdapter_tickets adapter;
     ProgressDialog mProgressDialog;
     ArrayList<HashMap<String, String>> arraylist;
-    static String ID = "id";
+    public static String ID = "id";
     public static String TYPE_CATEGORY = "type_category";
     public static String PRICE = "price";
     public static String EVENT_ID = "event_id";
     public static String EVENT_NAME = "event_name";
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ticket_listview);
+        Intent intent=getIntent();
+        id=intent.getStringExtra("event_id");
+        Toast.makeText(getApplication(),"eveid"+id,Toast.LENGTH_LONG).show();
         new DownloadJSON().execute();
         getSupportActionBar();
     }
@@ -60,14 +68,23 @@ public class Ticket_Booking extends ActionBarActivity {
             mProgressDialog.show();
         }
         @Override
-        protected Void doInBackground(Void... params)
+        protected Void doInBackground(Void... params1)
         {
             // Create an array
             arraylist = new ArrayList<HashMap<String, String>>();
             // Retrieve JSON Objects from the given URL address
-            jsonobject = JSONfunctions.getJSONfromURL("http://bishasha.com/json/ticket_booking.php");
+
             try
             {
+                List params=new ArrayList();
+                params.add(new BasicNameValuePair("event_id",id));
+                ServiceHandler sh=new ServiceHandler();
+                Log.d("request!","starting");
+
+                //getting detail by making http request
+                String jsonStr=sh.makeServiceCall("http://bishasha.com/json/ticket_booking.php", 1, params);
+                JSONObject jsonobject =new JSONObject(jsonStr);
+
                 // Locate the array name in JSON
                 jsonarray = jsonobject.getJSONArray("ticket_booking");
                 for (int i = 0; i < jsonarray.length(); i++)
@@ -77,8 +94,12 @@ public class Ticket_Booking extends ActionBarActivity {
                     // Retrive JSON Objects
                     map.put("type_category", jsonobject.getString("type_category"));
                     map.put("price", jsonobject.getString("price"));
-                    map.put("event_id", jsonobject.getString("event_id"));
-                    //map.put("event_name", jsonobject.getString("event_name"));
+                 //  map.put("event_id",jsonobject.getString("event_id"));
+                    //Log.d("event_id ticketbooking",id);
+                    map.put("id", jsonobject.getString("id"));
+                     map.put("event_id",id);
+                  Log.d("event_id ticketbooking",id);
+                  //  map.put("event_id",id);
                     arraylist.add(map);
                 }
             }

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -85,8 +86,9 @@ public class singleitemview extends ActionBarActivity {
                 if (session.isUserLoggedIn()) {
                     String user_entered = user.get(UserSession.KEY_EMAIL);
                     Intent intent = new Intent(context, Ticket_Booking.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("id", id);
+
+                    Log.d("event_id singleview",id);
+                    intent.putExtra("event_id", id);
                     startActivity(intent);
 
 
@@ -95,7 +97,7 @@ public class singleitemview extends ActionBarActivity {
                 {
                     Intent intent = new Intent(context, sign_in.class);
                     Bundle bundle = new Bundle();
-                    bundle.putString("id", id);
+                   // bundle.putString("id", id);
                     startActivity(intent);
                 }
             }
