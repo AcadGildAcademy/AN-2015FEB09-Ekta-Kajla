@@ -40,13 +40,7 @@
         >
 
     </item>
-    <item
-        android:id="@+id/booking"
-        android:title="Booking"
-        android:icon="@drawable/item_selector"
-        >
 
-    </item>
 
     <item
         android:id="@+id/artists"

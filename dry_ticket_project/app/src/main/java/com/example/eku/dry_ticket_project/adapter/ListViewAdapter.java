@@ -87,7 +87,7 @@ public class ListViewAdapter extends BaseAdapter {
                 bundle.putString("image_path", resultp.get(NowOnSale.IMAGE_PATH));
                 bundle.putString("id", resultp.get(NowOnSale.ID));
                 bundle.putString("desc", resultp.get(NowOnSale.DESC));
-                bundle.putString("price", resultp.get(NowOnSale.PRICE));
+             //   bundle.putString("price", resultp.get(NowOnSale.PRICE));
                 bundle.putString("date", resultp.get(NowOnSale.DATE));
                 bundle.putString("time", resultp.get(NowOnSale.TIME));
                 bundle.putString("venue", resultp.get(NowOnSale.VENUE));

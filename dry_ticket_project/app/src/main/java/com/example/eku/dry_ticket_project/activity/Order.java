@@ -6,6 +6,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -175,7 +178,8 @@ String email=user_email.toString();
             if (success == 1) {
                 Log.d("update Successful!", " Success");
                 Toast.makeText(getApplicationContext(), "Update", Toast.LENGTH_LONG).show();
-                ;
+              Intent intent=new Intent(Order.this,Last_page.class);
+                startActivity(intent);
             } else {
                 Log.d("update fail"," fail");
 
@@ -183,4 +187,57 @@ String email=user_email.toString();
             }
         }
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater m = getMenuInflater();
+        m.inflate(R.menu.menu_file, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.sign_in) {
+            Intent intent = new Intent(Order.this, sign_in.class);
+            startActivity(intent);
+        } else if (id == R.id.add_menu) {
+            Intent intent = new Intent(Order.this, sign_up.class);
+            startActivity(intent);
+            // CustomDialog cd = new CustomDialog();
+            // cd.show(fm, "Dialog");
+
+            return true;
+        } else if (id == R.id.now_on_sale) {
+            Intent intent = new Intent(Order.this, NowOnSale.class);
+            startActivity(intent);
+
+        } else if (id == R.id.upcoming) {
+            Intent intent = new Intent(Order.this, UpcomingEvents.class);
+            intent.putExtra("url_string", "http://bishasha.com/json/upcoming_events.php");
+            startActivity(intent);
+
+        } else if (id == R.id.past) {
+            Intent intent = new Intent(Order.this, PastEvents.class);
+            intent.putExtra("url_string", "http://bishasha.com/json/past_events.php");
+            startActivity(intent);
+
+
+
+        } else if (id == R.id.artists) {
+            Intent intent = new Intent(Order.this, Artist_information.class);
+            startActivity(intent);
+
+        } else if (id == R.id.venue) {
+            Intent intent = new Intent(Order.this, Venue.class);
+            startActivity(intent);
+
+        } else if (id == R.id.contact_us) {
+            Intent intent = new Intent(Order.this, ContactUs.class);
+            startActivity(intent);
+
+
+        } return super.onOptionsItemSelected(item);
+    }
 }
+
+

@@ -54,15 +54,14 @@ String cat,str_id;
     public View getView(final int position, View convertView, ViewGroup parent)
     {
         TextView type_category;
-        TextView price;
-        Button buy_ticket_btn;
+        TextView price,buy_ticket_btn;
         final String event_id;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View itemView = inflater.inflate(R.layout.ticket_selection, parent, false);
         resultp = data.get(position);
         type_category = (TextView) itemView.findViewById(R.id.type_category);
         price = (TextView) itemView.findViewById(R.id.price);
-        buy_ticket_btn = (Button) itemView.findViewById(R.id.buy_ticket);
+       buy_ticket_btn = (TextView) itemView.findViewById(R.id.buy_ticket);
         type_category.setText(resultp.get(Ticket_Booking.TYPE_CATEGORY));
         price.setText(resultp.get(Ticket_Booking.PRICE));
         str_id=resultp.get((Ticket_Booking.ID));

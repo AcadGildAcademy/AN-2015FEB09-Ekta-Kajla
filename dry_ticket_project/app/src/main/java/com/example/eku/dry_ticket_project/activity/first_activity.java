@@ -96,9 +96,7 @@ public class first_activity extends ActionBarActivity{
             intent.putExtra("url_string", "http://bishasha.com/json/past_events.php");
             startActivity(intent);
 
-        } else if (id == R.id.booking) {
-            Intent intent = new Intent(first_activity.this, Seat_allocation.class);
-            startActivity(intent);
+
 
         } else if (id == R.id.artists) {
             Intent intent = new Intent(first_activity.this, Artist_information.class);

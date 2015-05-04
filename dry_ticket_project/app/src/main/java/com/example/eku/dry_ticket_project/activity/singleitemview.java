@@ -49,7 +49,7 @@ public class singleitemview extends ActionBarActivity {
         desc = getIntent().getExtras().getString("desc");
         date = getIntent().getExtras().getString("date");
         time = getIntent().getExtras().getString("time");
-        price = getIntent().getExtras().getString("price");
+      //  price = getIntent().getExtras().getString("price");
         venue = getIntent().getExtras().getString("venue");
 
         // Get the result of image_path
@@ -70,7 +70,7 @@ public class singleitemview extends ActionBarActivity {
         txtdesc.setText(desc);
         txtdate.setText(date);
         txttime.setText(time);
-        txtprice.setText(price);
+      //  txtprice.setText(price);
         txtvenue.setText(venue);
         // Capture position and set results to the ImageView
         // Passes image_path images URL into ImageLoader.class
@@ -137,9 +137,6 @@ public class singleitemview extends ActionBarActivity {
             Intent intent = new Intent(singleitemview.this, PastEvents.class);
             startActivity(intent);
 
-        } else if (id == R.id.booking) {
-            Intent intent = new Intent(singleitemview.this, Seat_allocation.class);
-            startActivity(intent);
 
         } else if (id == R.id.artists) {
             Intent intent = new Intent(singleitemview.this, Artist_information.class);

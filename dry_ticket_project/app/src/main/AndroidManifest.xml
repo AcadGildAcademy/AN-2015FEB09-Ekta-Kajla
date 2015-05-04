@@ -81,6 +81,7 @@
         <activity android:name=".activity.Artist_detail_information"/>
         <activity android:name=".activity.Seat_allocation"></activity>
         <activity android:name=".activity.Order"></activity>
+        <activity android:name=".activity.Last_page"></activity>
 
 
     </application>

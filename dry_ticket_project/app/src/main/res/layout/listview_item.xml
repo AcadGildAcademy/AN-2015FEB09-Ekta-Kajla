@@ -8,16 +8,16 @@
 
     <ImageView
         android:id="@+id/flag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-android:paddingTop="5dp"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:paddingTop="5dp"
         android:layout_alignParentLeft="true"
         />
     <TextView
         android:id="@+id/detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:textSize="20sp"
         android:textStyle="italic"
         android:textColor="@color/reddish"
 android:text="Click For Detail"

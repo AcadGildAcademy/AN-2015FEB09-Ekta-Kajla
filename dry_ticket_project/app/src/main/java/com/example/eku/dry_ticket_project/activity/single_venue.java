@@ -99,9 +99,6 @@ public class single_venue extends ActionBarActivity {
             Intent intent = new Intent(single_venue.this, PastEvents.class);
             startActivity(intent);
 
-        } else if (id == R.id.booking) {
-            Intent intent = new Intent(single_venue.this, Seat_allocation.class);
-            startActivity(intent);
 
         } else if (id == R.id.artists) {
             Intent intent = new Intent(single_venue.this, Artist_information.class);

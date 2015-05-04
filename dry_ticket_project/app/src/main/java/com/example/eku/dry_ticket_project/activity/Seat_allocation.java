@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -65,7 +67,7 @@ public class Seat_allocation extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.seat_selection);
-        book_b=(Button)findViewById(R.id.book_btn);
+     //   book_b=(Button)findViewById(R.id.book_btn);
         check=(Button)findViewById(R.id.hello);
         Intent intent= getIntent();
         eve_id=intent.getStringExtra("id");
@@ -303,14 +305,14 @@ public class Seat_allocation extends ActionBarActivity {
         });
 
 
-        book_b.setOnClickListener(new View.OnClickListener() {
+     /*   book_b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new GetContacts().execute();
             }
 
         });
-        check.setOnClickListener(new View.OnClickListener() {
+      */  check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
   String ss=display0.getText().toString()+" "+display1.getText().toString()+" "+
@@ -345,14 +347,6 @@ public class Seat_allocation extends ActionBarActivity {
             }
         });
         getSupportActionBar();
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_file
-                , menu);
-        return true;
     }
 
     private class GetUserData extends AsyncTask<String, String, String> {
@@ -541,5 +535,59 @@ public class Seat_allocation extends ActionBarActivity {
             }
         }
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater m = getMenuInflater();
+        m.inflate(R.menu.menu_file, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.sign_in) {
+            Intent intent = new Intent(Seat_allocation.this, sign_in.class);
+            startActivity(intent);
+        } else if (id == R.id.add_menu) {
+            Intent intent = new Intent(Seat_allocation.this, sign_up.class);
+            startActivity(intent);
+            // CustomDialog cd = new CustomDialog();
+            // cd.show(fm, "Dialog");
+
+            return true;
+        } else if (id == R.id.now_on_sale) {
+            Intent intent = new Intent(Seat_allocation.this, NowOnSale.class);
+            startActivity(intent);
+
+        } else if (id == R.id.upcoming) {
+            Intent intent = new Intent(Seat_allocation.this, UpcomingEvents.class);
+            intent.putExtra("url_string", "http://bishasha.com/json/upcoming_events.php");
+
+            startActivity(intent);
+
+        } else if (id == R.id.past) {
+            Intent intent = new Intent(Seat_allocation.this, PastEvents.class);
+            intent.putExtra("url_string", "http://bishasha.com/json/past_events.php");
+            startActivity(intent);
+
+
+        } else if (id == R.id.artists) {
+            Intent intent = new Intent(Seat_allocation.this, Artist_information.class);
+            startActivity(intent);
+
+        } else if (id == R.id.venue) {
+            Intent intent = new Intent(Seat_allocation.this,Venue.class);
+            startActivity(intent);
+
+        }else if (id == R.id.contact_us) {
+            Intent intent = new Intent(Seat_allocation.this, ContactUs.class);
+            startActivity(intent);
+
+
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
 }
+
 

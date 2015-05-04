@@ -38,7 +38,7 @@ public class NowOnSale extends ActionBarActivity {
     public static String DESC = "desc";
     public static String DATE = "date";
     public static String TIME = "time";
-    public static String PRICE = "price";
+  //  public static String PRICE = "price";
     public static String VENUE = "venue";
     public static String IMAGE_PATH = "image_path";
     public static String TITLE = "title";
@@ -99,7 +99,7 @@ public class NowOnSale extends ActionBarActivity {
                     map.put("desc", jsonobject.getString("desc"));
                     map.put("date", jsonobject.getString("date"));
                     map.put("time", jsonobject.getString("time"));
-                    map.put("price", jsonobject.getString("price"));
+                 //   map.put("price", jsonobject.getString("price"));
                     map.put("venue", jsonobject.getString("venue"));
                     map.put("image_path", jsonobject.getString("image_path"));
                     map.put("title", jsonobject.getString("title"));
@@ -158,9 +158,7 @@ public class NowOnSale extends ActionBarActivity {
             intent.putExtra("url_string", "http://bishasha.com/json/past_events.php");
             startActivity(intent);
 
-        } else if (id == R.id.booking) {
-            Intent intent = new Intent(NowOnSale.this, Seat_allocation.class);
-            startActivity(intent);
+
 
         } else if (id == R.id.artists) {
             Intent intent = new Intent(NowOnSale.this,Artist_information.class);

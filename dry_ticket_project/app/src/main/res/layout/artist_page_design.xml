@@ -20,7 +20,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="DESCRIPTION"
+        android:text="@string/Desc"
         android:id="@+id/artist_title"
         android:textSize="15sp"
         android:textColor="@color/reddish"
@@ -37,7 +37,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SONGS"
+        android:text="Song::->"
         android:id="@+id/artist_song"
         android:textSize="15dp"
         android:textColor="@color/reddish"
@@ -47,11 +47,12 @@
         android:id="@+id/song_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="@color/reddish"
         android:textStyle="bold"
         android:textSize="25sp"
         android:background="@color/black"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
+
 
         />
 <LinearLayout

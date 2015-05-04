@@ -1,9 +1,13 @@
 package com.example.eku.dry_ticket_project.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.widget.Toast;
 
@@ -74,13 +78,66 @@ public class venue_map extends ActionBarActivity {
         mMap.addMarker(new MarkerOptions().position(new LatLng(-33.873178, 151.206583)).title("Sydney Town Hall NSW"));
         mMap.addMarker(new MarkerOptions().position(new LatLng(-36.757164, 144.276340)).title("The Capitol"));
         mMap.addMarker(new MarkerOptions().position(new LatLng(-34.551849, 146.405458)).title("Roxy Theater"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(-33.833029, 151.046938)).title("C3 Conference venue"));
         CameraUpdate center =
-                CameraUpdateFactory.newLatLng(new LatLng(-34.551849, 146.405458));
+                CameraUpdateFactory.newLatLng(new LatLng(-33.378337, 148.255190));
         CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
         mMap.moveCamera(center);
-        mMap.animateCamera(zoom);
+       // mMap.animateCamera(zoom);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater m = getMenuInflater();
+        m.inflate(R.menu.menu_file, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.sign_in) {
+            Intent intent = new Intent(venue_map.this, sign_in.class);
+            startActivity(intent);
+        } else if (id == R.id.add_menu) {
+            Intent intent = new Intent(venue_map.this, sign_up.class);
+            startActivity(intent);
+
+            return true;
+        } else if (id == R.id.now_on_sale) {
+            Intent intent = new Intent(venue_map.this, NowOnSale.class);
+            startActivity(intent);
+
+        } else if (id == R.id.upcoming) {
+            Intent intent = new Intent(venue_map.this, UpcomingEvents.class);
+            intent.putExtra("url_string", "http://bishasha.com/json/upcoming_events.php");
+            startActivity(intent);
+
+        } else if (id == R.id.past) {
+            Intent intent = new Intent(venue_map.this, PastEvents.class);
+            intent.putExtra("url_string", "http://bishasha.com/json/past_events.php");
+            startActivity(intent);
+
+
+
+        } else if (id == R.id.artists) {
+            Intent intent = new Intent(venue_map.this, Artist_information.class);
+            startActivity(intent);
+
+        } else if (id == R.id.venue) {
+            Intent intent = new Intent(venue_map.this, Venue.class);
+            startActivity(intent);
+
+        } else if (id == R.id.contact_us) {
+            Intent intent = new Intent(venue_map.this, ContactUs.class);
+            startActivity(intent);
+
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
+
+
 
 /*
     @Override

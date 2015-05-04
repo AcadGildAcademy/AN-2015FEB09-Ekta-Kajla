@@ -8,8 +8,9 @@
     android:drawable="@color/white"
     ></item>
 <item android:state_focused="true"
-    android:drawable="@color/brown"
+    android:drawable="@color/white"
     ></item>
 <item android:drawable="@color/brown"
+
     ></item>
 </selector>
